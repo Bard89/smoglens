@@ -10,15 +10,13 @@ This project uses Git Flow. More in [CONTRIBUTING.md](CONTRIBUTING.md).
 ```bash
 # Install git-flow
 brew install git-flow  # macOS
-apt-get install git-flow  # Ubuntu/Debian
+apt-get install git-flow  # linux
 
-# Initialize git-flow
-git flow init -d
+git flow init -d # initialize git-flow
+git flow feature start my-feature # start a new feature
 
-# Start a new feature
-git flow feature start my-feature
+git push -u origin feature/my-feature  # push feature branch for the first time (-u sets upstream tracking)
+git push                               # subsequent pushes
 
-# Finish feature (creates PR instead)
-git push -u origin feature/my-feature
 # Then create PR on GitHub to merge into develop
 ```
