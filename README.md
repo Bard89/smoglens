@@ -12,8 +12,9 @@ This project uses Git Flow -> [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ```bash
 # Install git-flow
-brew install git-flow  # macOS
-apt-get install git-flow  # linux
+brew install git-flow     # macOS
+apt-get install git-flow  # Linux
+choco install gitflow-avh # Windows (via Chocolatey)
 
 git flow init -d # initialize git-flow
 git flow feature start my-feature # start a new feature
