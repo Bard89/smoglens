@@ -1,9 +1,12 @@
-# smoglens
-Predict the air pollution in any place in Japan
+# SmogLens
+Predict the next few hours of air-pollution in any place in Japan. 
+
+The original pitch -> https://docs.google.com/presentation/d/1HZ1HlAWyo8_HaEVPiJ0_i2sVmD-E5akWW_KputF3Itw/edit?usp=sharing
+
+The data are collected using -> https://github.com/Bard89/air-quality-pipeline
 
 ## Development Workflow
-
-This project uses Git Flow. More in [CONTRIBUTING.md](CONTRIBUTING.md). 
+This project uses Git Flow -> [CONTRIBUTING.md](CONTRIBUTING.md). 
 
 ### Quick Start
 
