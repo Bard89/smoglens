@@ -5,10 +5,27 @@ The original pitch -> https://docs.google.com/presentation/d/1HZ1HlAWyo8_HaEVPiJ
 
 The data are collected using -> https://github.com/Bard89/air-quality-pipeline
 
+## Setup
+
+```bash
+# Install pyenv (macOS)
+brew install pyenv
+
+# Setup Python environment
+pyenv install 3.12.9
+pyenv virtualenv 3.12.9 smoglens
+pyenv local smoglens
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+**Data Location:** `/Users/vojtech/Code/Bard89/Project-Data/data/processed/`
+
 ## Development Workflow
 This project uses Git Flow -> [CONTRIBUTING.md](CONTRIBUTING.md). 
 
-### Quick Start
+### Quick Start with Git Flow
 
 ```bash
 # Install git-flow
