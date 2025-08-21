@@ -22,6 +22,18 @@ pip install -r requirements.txt
 
 **Data Location:** `/Users/vojtech/Code/Bard89/Project-Data/data/processed/`
 
+## Data Setup
+
+The project uses a shared data directory. Set it up with:
+
+```bash
+# Create your local data directory
+mkdir -p ~/smoglens-data
+
+# Link it to the project
+ln -s ~/smoglens-data data
+```
+
 ## Development Workflow
 This project uses Git Flow -> [CONTRIBUTING.md](CONTRIBUTING.md). 
 
