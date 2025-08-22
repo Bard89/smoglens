@@ -14,3 +14,4 @@ jupyter
 notebook
 ipykernel
 nbformat
+prophet
