@@ -27,8 +27,8 @@
 - Initial PM2.5 [enrichment pipeline](voi/V1_enrichement_OPEANAQ_OPENMETEO_JARTIC/pm25_hexagon_enrichment_script.ipynb) with nearest-neighbor approximation for missing sensor data
 - Enrichment process: merging PM2.5, weather (temperature, humidity, precipitation), and traffic data by location into H3 hexagons.
 - Basic EDA and [baseline models](voi/pm25_ar_analysis.ipynb) (Linear Regression, AR analysis)
-- [JARTIC traffic data EDA](Yulia/2023smoglens_traffic_data_jartic_EDAandLinearRegression.ipynb) with temporal patterns analysis
-- [PM2.5 Prophet model](Yulia/EDAonPM25.ipynb) for time series forecasting
+- [JARTIC traffic data EDA](yulia/2023smoglens_traffic_data_jartic_EDAandLinearRegression.ipynb) with temporal patterns analysis
+- [PM2.5 Prophet model](yulia/EDAonPM25.ipynb) for time series forecasting
 
 ## Released
 
