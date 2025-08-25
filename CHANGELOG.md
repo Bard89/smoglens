@@ -14,19 +14,19 @@
 - Non-autoregressive models with enriched dataset, deep learning models
 
 ### [0.0.4] - V3 fixed 2023 Data Enrichment (In progress)
-- Complete OpenAQ data for full year 2023 (currently missing Jan-Jul)
+- Complete OpenAQ data for full year 2023 (currently missing Jan-Jul; being downloaded)
 
 ------------------------------------ WE ARE HERE 26/08/2025-------------------------------------
 
-### [0.0.3] - V2 improved 2023 EDA and data Enrichment
-- Improved enrichment pipeline (combining PM2.5 with weather and traffic data using H3 hexagon spatial indexing)
-- EDA notebooks for all data sources (OpenAQ, OpenMeteo, JARTIC)
+### [0.0.3] - [V2 improved 2023 EDA and data Enrichment](/Users/vojtech/Code/Bard89/smoglens-02/voi/V2_enrichement_OPEANAQ_OPENMETEO_JARTIC)
+- Improved [enrichment pipeline](voi/V2_enrichement_OPEANAQ_OPENMETEO_JARTIC/pm25_hexagon_enrichment_2023.ipynb) (combining PM2.5 with weather and traffic data using H3 hexagon spatial indexing)
+- EDA jupyter notebooks for 3 data sources (OpenAQ, OpenMeteo, JARTIC)
 - Discovered: OpenAQ 2023 data missing Jan 1 - Jul 13
 
-### [0.0.2] - V1 basic 2023 EDA and data enrichment
-- Initial PM2.5 enrichment pipeline with nearest-neighbor approximation for missing sensor data
-- Enrichment process: merging PM2.5, weather (temperature, humidity, precipitation), and traffic data by location
-- Basic EDA and baseline models (Linear Regression...)
+### [0.0.2] - [V1 basic 2023 EDA and data enrichment](voi/V1_enrichement_OPEANAQ_OPENMETEO_JARTIC)
+- Initial PM2.5 [enrichment pipeline](voi/V1_enrichement_OPEANAQ_OPENMETEO_JARTIC/pm25_hexagon_enrichment_script.ipynb) with nearest-neighbor approximation for missing sensor data
+- Enrichment process: merging PM2.5, weather (temperature, humidity, precipitation), and traffic data by location into H3 hexagons.
+- Basic EDA and [baseline models](/voi/pm25_ar_analysis.ipynb) (Linear Regression... )
 
 ## Released
 
