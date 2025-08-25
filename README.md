@@ -1,55 +1,49 @@
 # SmogLens
-Predict the next few hours of air-pollution in any place in Japan. 
+
+The goal is to predict the next few hours of PM2.5 particle concentration in any place in Japan.
 
 The original pitch -> https://docs.google.com/presentation/d/1HZ1HlAWyo8_HaEVPiJ0_i2sVmD-E5akWW_KputF3Itw/edit?usp=sharing
 
-The data are collected using -> https://github.com/Bard89/air-quality-pipeline
+The data are collected using GH project -> https://github.com/Bard89/air-quality-pipeline
 
-## Setup
+## Setup (macOS)
 
 ```bash
-# Install pyenv (macOS)
 brew install pyenv
 
-# Setup Python environment
-pyenv install 3.12.9
-pyenv virtualenv 3.12.9 smoglens
+pyenv install 3.10.6
+pyenv virtualenv 3.10.6 smoglens
 pyenv local smoglens
 
-# Install dependencies
 pip install -r requirements.txt
 ```
-
-**Data Location:** `/Users/vojtech/Code/Bard89/Project-Data/data/processed/`
 
 ## Data Setup
 
 The project uses a shared data directory. Set it up with:
 
 ```bash
-# Create your local data directory
 mkdir -p ~/smoglens-data
-
-# Link it to the project
-ln -s ~/smoglens-data data
+ln -s ~/smoglens-data data # Link it to the project
 ```
 
-## Development Workflow
-This project uses Git Flow -> [CONTRIBUTING.md](CONTRIBUTING.md). 
+## Changelog
 
-### Quick Start with Git Flow
+For detailed version history and updates -> [CHANGELOG.md](CHANGELOG.md)
+
+## Development Workflow
+Use git flow -> [CONTRIBUTING.md](CONTRIBUTING.md). 
+
+### Quick Start with Git Flow (macOS)
 
 ```bash
-# Install git-flow
-brew install git-flow     # macOS
-apt-get install git-flow  # Linux
-choco install gitflow-avh # Windows (via Chocolatey)
+brew install git-flow
 
-git flow init -d # initialize git-flow
-git flow feature start my-feature # start a new feature
+git flow init -d
+git flow feature start my-feature
 
 git push -u origin feature/my-feature  # push feature branch for the first time (-u sets upstream tracking)
-git push                               # subsequent pushes
+git push
 
 # Then create PR on GitHub to merge into develop
 ```
