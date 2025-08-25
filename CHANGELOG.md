@@ -5,12 +5,12 @@
 - New features from external datasets
 - Enhanced enrichment pipeline
 
-### [0.1.1] - V4 Multi-Year Analysis & Modeling (Planned if needed/possible based on the 0.1.0)
+### [0.1.1] - V4 Multi-Year 2023 - 2025 analysis and Modeling (Planned if needed/possible based on the 0.1.0)
 - Complete 2023, 2024, and partial 2025 data
 - Comprehensive EDAs across all years
 - Full modeling pipeline with multiyear validation
 
-### [0.1.0] - V3 Advanced Modeling (Planned)
+### [0.1.0] - V3 2023 Advanced Modeling (Planned)
 - Non-autoregressive models with enriched dataset, deep learning models
 
 ### [0.0.4] - V3 fixed 2023 Data Enrichment (In progress)
