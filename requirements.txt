@@ -15,3 +15,4 @@ notebook
 ipykernel
 nbformat
 prophet
+pyarrow>=10.0.0
