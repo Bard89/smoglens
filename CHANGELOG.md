@@ -18,7 +18,7 @@
 
 ------------------------------------ WE ARE HERE 26/08/2025-------------------------------------
 
-### [0.0.3] - [V2 improved 2023 EDA and data Enrichment](/Users/vojtech/Code/Bard89/smoglens-02/voi/V2_enrichement_OPEANAQ_OPENMETEO_JARTIC)
+### [0.0.3] - [V2 improved 2023 EDA and data Enrichment](voi/V2_enrichement_OPEANAQ_OPENMETEO_JARTIC)
 - Improved [enrichment pipeline](voi/V2_enrichement_OPEANAQ_OPENMETEO_JARTIC/pm25_hexagon_enrichment_2023.ipynb) (combining PM2.5 with weather and traffic data using H3 hexagon spatial indexing)
 - EDA jupyter notebooks for 3 data sources (OpenAQ, OpenMeteo, JARTIC)
 - Discovered: OpenAQ 2023 data missing Jan 1 - Jul 13
