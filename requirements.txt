@@ -15,3 +15,6 @@ notebook
 ipykernel
 nbformat
 prophet
+cdsapi
+xarray
+netCDF4
