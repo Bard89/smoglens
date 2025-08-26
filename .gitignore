@@ -6,3 +6,6 @@
 # Data directories
 raw_data/
 data
+
+# AI slop
+CLAUDE.md
