@@ -7,7 +7,7 @@
 - Non-autoregressive models with enriched dataset, deep learning models
 - Multi-year validation (2023-2025)
 
-### [0.0.4] - V3 fixed 2023 Data Enrichment (In progress)
+### [0.0.4] - V3 fixed 2023 Data Enrichment (In progress -> 27/08/2025)
 - OpenAQ 2023 data incomplete (Jan-Jul missing, API broken)
 - Accumulation of one dataset from mid 2023 to mid 2025
 - Comprehensive EDAs on available years
