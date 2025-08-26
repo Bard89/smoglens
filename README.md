@@ -1,8 +1,10 @@
 # SmogLens
 
-The goal is to predict the next few hours of PM2.5 particle concentration in any place in Japan. Baseline is the available last hour of data.
+The goal is to predict the next few hours of PM2.5 particle concentration in any place in Japan better than baseline. 
 
-The data are collected using GH project -> https://github.com/Bard89/air-quality-pipeline
+Baseline is the available last hour of data. So we want to be better than the last datapoint.
+
+The data were collected using -> https://github.com/Bard89/air-quality-pipeline
 
 ## Setup (macOS)
 
@@ -37,10 +39,10 @@ Use git flow -> [CONTRIBUTING.md](CONTRIBUTING.md).
 ```bash
 brew install git-flow
 
-git flow init -d
+git flow init
 git flow feature start my-feature
 
-git push -u origin feature/my-feature  # push feature branch for the first time (-u sets upstream tracking)
+git push -u origin feature/my-feature
 git push
 
 # Then create PR on GitHub to merge into develop
