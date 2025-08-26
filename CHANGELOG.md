@@ -1,20 +1,16 @@
 ## Unreleased
 
-### [0.1.2] - V5 Extended Feature Enrichment (Planned needed/possible)
-- Additional data sources integration
-- New features from external datasets
-- Enhanced enrichment pipeline
+### [0.1.1] - V5 Extended Feature Enrichment (Planned)
+- Additional data sources integration w/ new features
 
-### [0.1.1] - V4 Multi-Year 2023 - 2025 analysis and Modeling (Planned if needed/possible)
-- Complete 2023, 2024, and partial 2025 data
-- Comprehensive EDAs across all years
-- Full modeling pipeline with multiyear validation
-
-### [0.1.0] - V3 2023 Advanced Modeling (Planned)
+### [0.1.0] - V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling (Planned)
 - Non-autoregressive models with enriched dataset, deep learning models
+- Multi-year validation (2023-2025)
 
 ### [0.0.4] - V3 fixed 2023 Data Enrichment (In progress)
-- Complete OpenAQ data for full year 2023 (currently missing Jan-Jul; being downloaded)
+- OpenAQ 2023 data incomplete (Jan-Jul missing, API broken)
+- Accumulation of one dataset from mid 2023 to mid 2025
+- Comprehensive EDAs on available years
 
 ------------------------------------ WE ARE HERE 26/08/2025-------------------------------------
 
