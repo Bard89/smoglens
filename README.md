@@ -1,8 +1,6 @@
 # SmogLens
 
-The goal is to predict the next few hours of PM2.5 particle concentration in any place in Japan.
-
-The original pitch -> https://docs.google.com/presentation/d/1HZ1HlAWyo8_HaEVPiJ0_i2sVmD-E5akWW_KputF3Itw/edit?usp=sharing
+The goal is to predict the next few hours of PM2.5 particle concentration in any place in Japan. Baseline is the available last hour of data.
 
 The data are collected using GH project -> https://github.com/Bard89/air-quality-pipeline
 
