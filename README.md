@@ -37,10 +37,10 @@ Use git flow -> [CONTRIBUTING.md](CONTRIBUTING.md).
 ```bash
 brew install git-flow
 
-git flow init -d
+git flow init
 git flow feature start my-feature
 
-git push -u origin feature/my-feature  # push feature branch for the first time (-u sets upstream tracking)
+git push -u origin feature/my-feature
 git push
 
 # Then create PR on GitHub to merge into develop
