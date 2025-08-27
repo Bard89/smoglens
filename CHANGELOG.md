@@ -1,9 +1,13 @@
 ## Unreleased
 
+- [0.0.2] and [0.0.3] will be ready for release after fixing the structure in https://github.com/Bard89/smoglens/pull/24
+
 ### [0.1.1] - V5 Extended Feature Enrichment (Planned)
 - Additional data sources integration w/ new features
+  - Explore and potentially add features from other already downloaded datasets.
+  - Get more data from elsewhere. Need some outside of Japan pm2.5 measurements to be able to predict delayed transmission to Japan. Potentially data from Korea we have already or some low res satelite data paired with weather. 
 
-### [0.1.0] - V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling (Planned)
+### [0.1.0] - V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling (Planned, first version 28/8/2025)
 - Non-autoregressive models with enriched dataset, deep learning models
 - Multi-year validation (2023-2025)
 
