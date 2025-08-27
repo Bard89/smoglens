@@ -2,6 +2,8 @@
 
 - [0.0.2] and [0.0.3] will be ready for release after fixing the structure in https://github.com/Bard89/smoglens/pull/24
 
+------------------------------------ PROJECT PRESENTATION 05/09/2025-------------------------------------
+
 ### [0.1.1] - V5 Extended Feature Enrichment (Planned)
 - Additional data sources integration w/ new features
   - Explore and potentially add features from other already downloaded datasets.
