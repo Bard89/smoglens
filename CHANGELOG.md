@@ -7,12 +7,14 @@
 - Non-autoregressive models with enriched dataset, deep learning models
 - Multi-year validation (2023-2025)
 
-### [0.0.4] - V3 fixed 2023 Data Enrichment (In progress -> 27/08/2025)
-- OpenAQ 2023 data incomplete (Jan-Jul missing, API broken)
-- Accumulation of one dataset from mid 2023 to mid 2025
-- Comprehensive EDAs on available years
+------------------------------------ WE ARE HERE 27/08/2025-------------------------------------
 
------------------------------------- WE ARE HERE 26/08/2025-------------------------------------
+### [0.0.4] - [V3 fixed 2023 Data Enrichment](voi/V3_enrichement_OPEANAQ_OPENMETEO_JARTIC) (In progress)
+- OpenAQ 2023 data incomplete (Jan-Jul missing, API broken)
+- Accumulation of one dataset from mid 2023 to mid 2025.
+- Comprehensive EDAs on available years ([OpenAQ 2023-2025](voi/V3_enrichement_OPEANAQ_OPENMETEO_JARTIC/openaq_2023_2025_eda.ipynb), [OpenMeteo 2023-2025](voi/V3_enrichement_OPEANAQ_OPENMETEO_JARTIC/openmeteo_2023_2025_eda.ipynb), [JARTIC 2023-2025](voi/V3_enrichement_OPEANAQ_OPENMETEO_JARTIC/jartic_2023_2025_eda.ipynb)). Based on the results some of the OpenMeteo data need to be redownbloaded and some JARTIC needs to be reprocessed. Both in progress, should be ready on 28/8/2025.
+- [OpenMeteo data consistency analysis](voi/V3_enrichement_OPEANAQ_OPENMETEO_JARTIC/openmeteo_data_consistency_analysis_betwee_2_monthly_datasets.ipynb) - identified 5x spatial resolution difference between 2 monthly downloads
+
 
 ### [0.0.3] - [V2 improved 2023 EDA and data Enrichment](voi/V2_enrichement_OPEANAQ_OPENMETEO_JARTIC)
 - Improved [enrichment pipeline](voi/V2_enrichement_OPEANAQ_OPENMETEO_JARTIC/pm25_hexagon_enrichment_2023.ipynb) (combining PM2.5 with weather and traffic data using H3 hexagon spatial indexing)
