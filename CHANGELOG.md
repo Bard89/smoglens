@@ -8,7 +8,8 @@
 - Additional data sources integration w/ new features
   - Explore and potentially add features from other already downloaded datasets.
   - Get more data from elsewhere. Need some outside of Japan pm2.5 measurements to be able to predict delayed transmission to Japan. Potentially data from Korea we have already or some low res satelite data paired with weather.
-  - This dataset from the Climate Data Store API connected the yellow dust dataset (NetCDF zip) from the Copernicus Atmosphere Monitoring Service, including PM2.5, PM10, and wind from China. ([/Yulia/V5_yellow_dust_analysis/yellow_dust_preprocessingEDA.ipynb]([url](https://github.com/Bard89/smoglens/blob/develop/yulia/V5_yellow_dust_analysis/yellow_dust_preprocessingEDA.ipynb)))
+  - This dataset from the Climate Data Store API connected the yellow dust dataset (NetCDF zip) from the Copernicus Atmosphere Monitoring Service, including PM2.5, PM10, and wind from China. [Yellow Dust Preprocessing EDA](https://github.com/Bard89/smoglens/blob/develop/yulia/V5_yellow_dust_analysis/yellow_dust_preprocessingEDA.ipynb)
+
 
 ### [0.1.0] - V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling (Planned, first version 28/8/2025)
 - Non-autoregressive models with enriched dataset, deep learning models
