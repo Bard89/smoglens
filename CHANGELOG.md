@@ -2,7 +2,7 @@
 
 - [0.0.2] and [0.0.3] will be ready for release after fixing the structure in https://github.com/Bard89/smoglens/pull/24
 
------------------------------------- PROJECT PRESENTATION 05/09/2025-------------------------------------
+------------------------------------ PRESENTATION DEADLINE 05/09/2025-------------------------------------
 
 ### [0.1.1] - V5 Extended Feature Enrichment (Planned)
 - Additional data sources integration w/ new features
@@ -12,7 +12,7 @@
 
 ------------------------------------ WE ARE HERE 30/08/2025-------------------------------------
 
-### [0.1.0] - V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling (In progress)
+### [0.1.0] - [V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC) (In progress)
 - Non-autoregressive models with enriched dataset, deep learning models
 - Multi-year validation (2023-2025)
 
@@ -37,5 +37,5 @@
 
 ## Released
 
-### [0.0.1] - 2025-01-06
+### [0.0.1] - 2025-08-03
 - Initial project setup
