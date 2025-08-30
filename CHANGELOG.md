@@ -10,7 +10,7 @@
 
 ------------------------------------ WE ARE HERE 30/08/2025-------------------------------------
 
-### [0.1.0] - V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling (In progress)
+### [0.1.0] - [V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC) (In progress)
 - Non-autoregressive models with enriched dataset, deep learning models
 - Multi-year validation (2023-2025)
 
@@ -34,5 +34,5 @@
 - Basic EDA ([JARTIC traffic](yulia/2023smoglens_traffic_data_jartic_EDAandLinearRegression.ipynb), [OpenMeteo Weather](voi/V1_enrichement_OPEANAQ_OPENMETEO_JARTIC/openmeteo_eda.ipynb)) and [baseline models](voi/V1_enrichement_OPEANAQ_OPENMETEO_JARTIC/pm25_AR_analysis_modeling.ipynb) (Linear Regression, AR analysis) including hexagon H3 size selection.
 - [PM2.5 Prophet model](yulia/V1_EDA_prophet/EDAonPM25.ipynb)
 
-### [0.0.1] - 2025-01-06
+### [0.0.1] - 2025-08-03
 - Initial project setup
