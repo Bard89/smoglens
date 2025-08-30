@@ -6,6 +6,8 @@
 # Data directories
 raw_data/
 data
+.ipynb_checkpoints/
 
 # AI slop
 CLAUDE.md
+yulia/V1_traffic_PM25_processing
