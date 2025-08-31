@@ -13,6 +13,11 @@
 ### [0.1.0] - [V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC) (In progress)
 - Non-autoregressive models with enriched dataset, deep learning models
 - Multi-year validation (2023-2025)
+- Enhanced EDA notebooks with missing data analysis:
+  - [Missing Data Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/missing_data_analysis.ipynb) - Comprehensive missing data visualization across all datasets
+  - [Feature Correlation Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/feature_correlation_analysis.ipynb) - PM2.5 correlations with temporal aggregation
+  - [Feature Selection Summary](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/feature_selection_summary.ipynb) - Final feature recommendations for unified dataset
+  - [NASA Weather EDA](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/nasa_weather_2023_2025_eda.ipynb) - Analysis of NASA weather data for potential integration
 
 ## Released
 
