@@ -1,6 +1,6 @@
 ## Unreleased
 
------------------------------------- PROJECT PRESENTATION 05/09/2025-------------------------------------
+━━━━━━ PROJECT PRESENTATION SUBMISSION THU 05/09/2025 ━━━━━━
 
 ### [0.1.1] - V5 Extended Feature Enrichment (Planned)
 - Additional data sources integration w/ new features
@@ -8,11 +8,20 @@
   - Get more data from elsewhere. Need some outside of Japan pm2.5 measurements to be able to predict delayed transmission to Japan. Potentially data from Korea we have already or some low res satelite data paired with weather.
   - This dataset from the Climate Data Store API connected the yellow dust dataset (NetCDF zip) from the Copernicus Atmosphere Monitoring Service, including PM2.5, PM10, and wind from China. [Yellow Dust Preprocessing EDA](https://github.com/Bard89/smoglens/blob/develop/yulia/V5_yellow_dust_analysis/yellow_dust_preprocessingEDA.ipynb)
 
------------------------------------- WE ARE HERE 30/08/2025-------------------------------------
+━━━━━━ WE ARE HERE 31/08/2025 ━━━━━━
 
-### [0.1.0] - [V4 Multi-Year mid 2023 - mid 2025 analysis and advanced modeling](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC) (In progress)
-- Non-autoregressive models with enriched dataset, deep learning models
-- Multi-year validation (2023-2025)
+### [0.1.0] - 2025-08-31 - [V4 Multi-Year Analysis (2023-2025)](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC) (In progress)
+- Extended temporal coverage: June 2023 - June 2025
+- **Key finding:** Spatial mismatch between datasets - OpenMeteo's 30 hexagons vs OpenAQ's 643 limits nearest-neighbor enrichment effectiveness
+- **Individual dataset EDAs:**
+  - [OpenAQ PM2.5 Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/openaq_2023_2025_eda.ipynb) - 643 hexagons, 80% PM2.5 completeness
+  - [OpenMeteo Weather Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/openmeteo_2023_2025_eda.ipynb) - 30 hexagons, 100% temporal coverage
+  - [JARTIC Traffic Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/jartic_2023_2025_eda.ipynb) - 1,018 hexagons, 100% completeness
+  - [NASA Weather Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/nasa_weather_2023_2025_eda.ipynb) - 15 hexagons, May 2024 missing
+- **OpenAQ + OpenMeteo + JARTIC integrated analysis:**
+  - [Missing Data Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/OpenAQ_OpenMeteo_JARTIC/missing_data_analysis.ipynb)
+  - [Feature Correlation Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/OpenAQ_OpenMeteo_JARTIC/feature_correlation_analysis.ipynb)
+  - [Feature Selection Summary](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/OpenAQ_OpenMeteo_JARTIC/feature_selection_summary.ipynb)
 
 ## Released
 
