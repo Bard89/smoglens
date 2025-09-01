@@ -30,7 +30,6 @@
       - [01_baseline_high_coverage_simple](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/V1_baseline/01_baseline_high_coverage_simple.ipynb) - High coverage hexagons only (≥90% coverage), simple features
       - [02_baseline_multifeature_horizon_specific](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/V1_baseline/02_baseline_multifeature_horizon_specific.ipynb) - Horizon-specific models with enhanced features (traffic, temporal, quality score)
     - **V2_advanced/** - Gradient boosting ensemble (XGBoost + CatBoost + LightGBM) with enhanced features (in progress)
-    - **V3_moonshot/** - Future state-of-the-art models (TFT, LSTM)
 
 ## Released
 
