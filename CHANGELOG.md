@@ -27,8 +27,8 @@
   - **04_enriched_data_analysis/** - [Enriched Dataset EDA](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/04_enriched_data_analysis/pm25_enriched_2023_2025_v4_eda.ipynb) - 9.4M records, 39 features
   - **05_modeling/** - [Model Plan](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/model_plan_v4.md) - Ensemble approach (LSTM + LightGBM + GNN)
     - **V1_baseline/** - Baseline models:
-      - [01_baseline_model_v1](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/V1_baseline/01_baseline_model_v1.ipynb) - High coverage hexagons only (≥90% coverage), simple features, achieves R²: 1h~0.85, 12h~0.38, 24h~0.20
-      - [01_baseline_model_v2](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/V1_baseline/01_baseline_model_v2.ipynb) - Horizon-specific models with enhanced features (traffic, temporal, quality score)
+      - [01_baseline_high_coverage_simple](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/V1_baseline/01_baseline_high_coverage_simple.ipynb) - High coverage hexagons only (≥90% coverage), simple features, achieves R²: 1h~0.85, 12h~0.38, 24h~0.20
+      - [02_baseline_multifeature_horizon_specific](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/V1_baseline/02_baseline_multifeature_horizon_specific.ipynb) - Horizon-specific models with enhanced features (traffic, temporal, quality score)
     - **V2_advanced/** - Gradient boosting ensemble (XGBoost + CatBoost + LightGBM) with enhanced features (in progress)
     - **V3_moonshot/** - Future state-of-the-art models (TFT, LSTM)
 
