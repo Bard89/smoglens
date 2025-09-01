@@ -16,3 +16,5 @@ ipykernel
 nbformat
 prophet
 pyarrow>=10.0.0
+libpysal
+esda
