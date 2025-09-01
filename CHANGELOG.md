@@ -13,12 +13,12 @@
 ### [0.1.0] - 2025-08-31 - [V4 Multi-Year Analysis (2023-2025)](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC) (In progress)
 - Extended temporal coverage: June 2023 - June 2025
 - **Key finding:** Spatial mismatch between datasets - OpenMeteo's 30 hexagons vs OpenAQ's 643 limits nearest-neighbor enrichment effectiveness
-- **Workflow organization:** Numbered folders for clear processing flow:
+- **Processing flow:**
   - **01_raw_data_exploration/** - Individual dataset EDAs:
     - [OpenAQ PM2.5 Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/01_raw_data_exploration/openaq_2023_2025_eda.ipynb) - 643 hexagons, 80% PM2.5 completeness
     - [OpenMeteo Weather Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/01_raw_data_exploration/openmeteo_2023_2025_eda.ipynb) - 30 hexagons, 100% temporal coverage
     - [JARTIC Traffic Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/01_raw_data_exploration/jartic_2023_2025_eda.ipynb) - 1,018 hexagons, 100% completeness
-    - [NASA Weather Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/01_raw_data_exploration/nasa_weather_2023_2025_eda.ipynb) - 15 hexagons, May 2024 missing
+    - [NASA Weather Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/01_raw_data_exploration/nasa_weather_2023_2025_eda.ipynb) - 15 hexagons, May 2024 missing -> not in enrichement.
   - **02_feature_analysis/** - Pre-enrichment feature selection:
     - [Missing Data Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/02_feature_analysis/missing_data_analysis.ipynb)
     - [Feature Correlation Analysis](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/02_feature_analysis/feature_correlation_analysis.ipynb)
@@ -26,6 +26,11 @@
   - **03_data_processing/** - [Enrichment Pipeline](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/03_data_processing/pm25_enrichment_pipeline_v4.ipynb) with K-NN interpolation
   - **04_enriched_data_analysis/** - [Enriched Dataset EDA](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/04_enriched_data_analysis/pm25_enriched_2023_2025_v4_eda.ipynb) - 9.4M records, 39 features
   - **05_modeling/** - [Model Plan](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/model_plan_v4.md) - Ensemble approach (LSTM + LightGBM + GNN)
+    - **V1_baseline/** - Baseline models:
+      - [01_baseline_model_v1](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/V1_baseline/01_baseline_model_v1.ipynb) - High coverage hexagons only (≥90% coverage), simple features, achieves R²: 1h~0.85, 12h~0.38, 24h~0.20
+      - [01_baseline_model_v2](voi/V4_enrichement_OPEANAQ_OPENMETEO_JARTIC/05_modeling/V1_baseline/01_baseline_model_v2.ipynb) - Horizon-specific models with enhanced features (traffic, temporal, quality score)
+    - **V2_advanced/** - Gradient boosting ensemble (XGBoost + CatBoost + LightGBM) with enhanced features (in progress)
+    - **V3_moonshot/** - Future state-of-the-art models (TFT, LSTM)
 
 ## Released
 
