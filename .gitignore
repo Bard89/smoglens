@@ -10,10 +10,13 @@ data
 
 # AI slop
 CLAUDE.md
-yulia/V1_traffic_PM25_processing
+
+
+# Model training
+
 .DS_Store
 
-# Pickle files (trained models)
+# Pickle files
 *.pkl
 
 # CatBoost snapshots
