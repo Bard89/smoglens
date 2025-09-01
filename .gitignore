@@ -12,3 +12,7 @@ data
 CLAUDE.md
 yulia/V1_traffic_PM25_processing
 .DS_Store
+
+# Pickle files (trained models)
+*.pkl
+
