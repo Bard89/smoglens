@@ -27,6 +27,13 @@ mkdir -p ~/smoglens-data
 ln -s ~/smoglens-data data # Link it to the project
 ```
 
+## Data Source Abbreviations
+
+The project uses abbreviated folder names for clarity:
+- **oAQ**: OpenAQ (PM2.5 air quality measurements)
+- **oM**: OpenMeteo (weather data)
+- **J**: JARTIC (traffic data)
+
 ## Changelog
 
 For detailed version history and updates -> [CHANGELOG.md](CHANGELOG.md)

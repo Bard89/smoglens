@@ -2,12 +2,6 @@
 
 ━━━━━━ PROJECT PRESENTATION SUBMISSION THU 05/09/2025 ━━━━━━
 
-## Data Source Abbreviations
-All enrichment versions use three primary data sources:
-- **oAQ**: OpenAQ (PM2.5 air quality measurements)
-- **oM**: OpenMeteo (weather data)
-- **J**: JARTIC (traffic data)
-
 ### [0.1.1] - V5 Extended Feature Enrichment (Planned)
 - Additional data sources integration w/ new features
   - Explore and potentially add features from other already downloaded datasets.
