@@ -26,12 +26,12 @@
   - **03_data_processing/** - [Enrichment Pipeline](voi/v4_multiyear/03_data_processing/pm25_enrichment_pipeline_v4.ipynb) with K-NN interpolation
   - **04_enriched_data_analysis/** - [Enriched Dataset EDA](voi/v4_multiyear/04_enriched_data_analysis/pm25_enriched_2023_2025_v4_eda.ipynb) - 9.4M records, 39 features
   - **05_modeling/** - [Model Plan](voi/v4_multiyear/05_modeling/model_plan_v4.md) - Ensemble approach (LSTM + LightGBM + GNN)
-    - **baseline/** - Baseline model:
-      - [01_baseline_reference](voi/v4_multiyear/05_modeling/baseline/01_baseline_reference.ipynb) - **Reference baseline** (LinearReg: MAE=2.08@1h, 4.84@24h, R²=0.845@1h, 0.201@24h) - High coverage hexagons (≥90%), simple features, used for all V2 comparisons
-    - **advanced/** - Gradient boosting ensemble (XGBoost + CatBoost + LightGBM) with enhanced features
-      - [01_train_gradient_boosting_ensemble](voi/v4_multiyear/05_modeling/advanced/01_ensemble_training/01_train_gradient_boosting_ensemble.ipynb) - Main ensemble training with comprehensive feature engineering, includes training scripts
-      - [02_evaluate_ensemble_performance](voi/v4_multiyear/05_modeling/advanced/02_ensemble_evaluation/02_evaluate_ensemble_performance.ipynb) - Memory-optimized evaluation with statistical tests and visualizations
-      - [03_lightgbm_feature_analysis](voi/v4_multiyear/05_modeling/advanced/03_model_analysis/03_lightgbm_feature_analysis.ipynb) - Deep dive into LightGBM feature importance and SHAP analysis
+    - **01_baseline/** - Baseline model:
+      - [01_baseline_reference](voi/v4_multiyear/05_modeling/01_baseline/01_baseline_reference.ipynb) - **Reference baseline** (LinearReg: MAE=2.08@1h, 4.84@24h, R²=0.845@1h, 0.201@24h) - High coverage hexagons (≥90%), simple features, used for all V2 comparisons
+    - **02_advanced/** - Gradient boosting ensemble (XGBoost + CatBoost + LightGBM) with enhanced features
+      - [01_train_gradient_boosting_ensemble](voi/v4_multiyear/05_modeling/02_advanced/01_ensemble_training/01_train_gradient_boosting_ensemble.ipynb) - Main ensemble training with comprehensive feature engineering, includes training scripts
+      - [02_evaluate_ensemble_performance](voi/v4_multiyear/05_modeling/02_advanced/02_ensemble_evaluation/02_evaluate_ensemble_performance.ipynb) - Memory-optimized evaluation with statistical tests and visualizations
+      - [03_lightgbm_feature_analysis](voi/v4_multiyear/05_modeling/02_advanced/03_model_analysis/03_lightgbm_feature_analysis.ipynb) - Deep dive into LightGBM feature importance and SHAP analysis
       - **Results:** MAE beats baseline on all horizons, R² challenges persist
 
 ## Released
