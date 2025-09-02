@@ -47,3 +47,7 @@ git push
 
 # Then create PR on GitHub to merge into develop
 ```
+## Abbreviations
+- **oAQ**: OpenAQ (PM2.5 air quality measurements)
+- **oM**: OpenMeteo (weather data)
+- **J**: JARTIC (traffic data)
