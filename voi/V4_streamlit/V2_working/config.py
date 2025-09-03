@@ -1,15 +1,20 @@
 from pathlib import Path
 import numpy as np
+import os
 
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / 'data'
-MODEL_DIR = BASE_DIR / 'models'
 
 SHIBUYA_LAT = 35.6580
 SHIBUYA_LON = 139.7016
 SHIBUYA_HEXAGON = '872e44d04ffffff'
 
-DATA_PATH = '/Users/vojtech/Code/Bard89/smoglens-02/data/pm25_enriched_2023_2025_v4_20250830_222050.csv'
+if os.getenv('STREAMLIT_CLOUD'):
+    DATA_PATH = BASE_DIR / 'data' / 'shibuya_2024.csv.gz'
+    MODEL_DIR = BASE_DIR / 'models'
+else:
+    DATA_PATH = '/Users/vojtech/Code/Bard89/smoglens-02/data/pm25_enriched_2023_2025_v4_20250830_222050.csv'
+    MODEL_DIR = Path('/Users/vojtech/Code/Bard89/smoglens-02/voi/v4_multiyear/05_modeling/02_advanced/01_ensemble_training/trained')
 
 ACTIVITY_LIMITS = {
     'Running': 10,
