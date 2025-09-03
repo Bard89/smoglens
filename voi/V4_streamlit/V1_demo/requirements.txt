@@ -1,5 +1,5 @@
-streamlit==1.29.0
-pandas==2.0.3
-numpy==1.24.3
-plotly==5.18.0
-pytz==2023.3
+streamlit==1.37.0
+pandas==2.2.2
+numpy==1.26.4
+plotly==5.23.0
+pytz==2024.1
