@@ -210,13 +210,6 @@ with st.spinner("Generating predictions..."):
                         'upper': '95% CI Upper'
                     }).set_index('Time')
                 )
-            
-            with st.expander("🗺️ Spatial Coverage"):
-                coverage = spatial_imputer.get_spatial_coverage(selected_datetime)
-                st.metric("Data Coverage", f"{coverage['coverage_percentage']:.1f}%")
-                st.caption(f"{coverage['hexagons_with_data']}/{coverage['total_hexagons']} hexagons with data")
-                if coverage['average_distance'] > 0:
-                    st.caption(f"Average distance: {coverage['average_distance']:.1f} km")
                     
     except Exception as e:
         st.error(f"Error generating predictions: {str(e)}")

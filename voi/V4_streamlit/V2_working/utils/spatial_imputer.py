@@ -106,13 +106,18 @@ class SpatialImputer:
             'average_distance': 0.0
         }
         
+        timestamp = pd.to_datetime(timestamp)
+        time_window_start = timestamp - pd.Timedelta(hours=1)
+        time_window_end = timestamp + pd.Timedelta(hours=1)
+        
         hexagons_with_data = []
         distances = []
         
         for neighbor in neighbors:
             neighbor_data = self.data_processor.data[
                 (self.data_processor.data['hex7_id'] == neighbor) &
-                (self.data_processor.data['timestamp'] == timestamp)
+                (self.data_processor.data['timestamp'] >= time_window_start) &
+                (self.data_processor.data['timestamp'] <= time_window_end)
             ]
             
             if not neighbor_data.empty:
@@ -125,5 +130,12 @@ class SpatialImputer:
         
         if distances:
             coverage['average_distance'] = np.mean(distances)
+        
+        if coverage['hexagons_with_data'] == 0:
+            available_hexes = self.data_processor.data[
+                (self.data_processor.data['timestamp'] >= time_window_start) &
+                (self.data_processor.data['timestamp'] <= time_window_end)
+            ]['hex7_id'].nunique()
+            coverage['note'] = f"No nearby data. {available_hexes} hexagons have data in this time window."
         
         return coverage
