@@ -3,8 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pytz
-import folium
-from streamlit_folium import st_folium
 import sys
 from pathlib import Path
 
@@ -70,32 +68,12 @@ with st.sidebar:
 col1, col2 = st.columns([2, 1])
 
 with col1:
-    m = folium.Map(
-        location=[config.SHIBUYA_LAT, config.SHIBUYA_LON],
-        zoom_start=13,
-        tiles='CartoDB positron',
-        width='100%',
-        height='100%'
-    )
-    
-    folium.Marker(
-        [config.SHIBUYA_LAT, config.SHIBUYA_LON],
-        popup='Shibuya Station, Tokyo',
-        tooltip='📍 PM2.5 Monitoring Location',
-        icon=folium.Icon(color='red', icon='info-sign')
-    ).add_to(m)
-    
-    folium.Circle(
-        location=[config.SHIBUYA_LAT, config.SHIBUYA_LON],
-        radius=500,
-        color='#6366F1',
-        fill=True,
-        fillColor='#6366F1',
-        fillOpacity=0.2,
-        popup='500m radius coverage area'
-    ).add_to(m)
-    
-    st_folium(m, height=250, returned_objects=[], key='tokyo_map')
+    map_data = pd.DataFrame({
+        'lat': [config.SHIBUYA_LAT],
+        'lon': [config.SHIBUYA_LON]
+    })
+    st.map(map_data, zoom=13, use_container_width=True)
+    st.caption("📍 Shibuya Station - 500m radius coverage")
 
 with col2:
     st.metric("🕐 Tokyo Time", selected_datetime.strftime("%H:%M"))
