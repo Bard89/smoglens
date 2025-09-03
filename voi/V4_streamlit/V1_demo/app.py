@@ -3,8 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pytz
-import folium
-from streamlit_folium import st_folium
 
 from utils.visualization import create_activity_prediction_chart
 import config
@@ -24,35 +22,12 @@ st.markdown("Real-time PM2.5 predictions for outdoor activities in Shibuya")
 
 data = load_shibuya_data()
 
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([1, 1])
 
 with col1:
-    m = folium.Map(
-        location=[config.SHIBUYA_LAT, config.SHIBUYA_LON],
-        zoom_start=13,
-        tiles='CartoDB positron',
-        width='100%',
-        height='100%'
-    )
-    
-    folium.Marker(
-        [config.SHIBUYA_LAT, config.SHIBUYA_LON],
-        popup='Shibuya Station, Tokyo',
-        tooltip='📍 PM2.5 Monitoring Location',
-        icon=folium.Icon(color='red', icon='info-sign')
-    ).add_to(m)
-    
-    folium.Circle(
-        location=[config.SHIBUYA_LAT, config.SHIBUYA_LON],
-        radius=500,
-        color='#6366F1',
-        fill=True,
-        fillColor='#6366F1',
-        fillOpacity=0.2,
-        popup='500m radius coverage area'
-    ).add_to(m)
-    
-    st_folium(m, height=250, returned_objects=[], key='tokyo_map')
+    st.info(f"📍 **Location**: Shibuya Station, Tokyo")
+    st.caption(f"Lat: {config.SHIBUYA_LAT:.4f}, Lon: {config.SHIBUYA_LON:.4f}")
+    st.caption("Coverage: 500m radius from station")
 
 with col2:
     tokyo_tz = pytz.timezone('Asia/Tokyo')
