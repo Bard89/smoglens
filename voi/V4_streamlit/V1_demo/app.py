@@ -22,14 +22,22 @@ st.markdown("Real-time PM2.5 predictions for outdoor activities in Shibuya")
 
 data = load_shibuya_data()
 
-col1, col2 = st.columns([1, 1])
+col1, col2, col3 = st.columns([1.5, 1, 1])
 
 with col1:
-    st.info(f"📍 **Location**: Shibuya Station, Tokyo")
-    st.caption(f"Lat: {config.SHIBUYA_LAT:.4f}, Lon: {config.SHIBUYA_LON:.4f}")
-    st.caption("Coverage: 500m radius from station")
+    map_data = pd.DataFrame({
+        'lat': [config.SHIBUYA_LAT],
+        'lon': [config.SHIBUYA_LON]
+    })
+    st.map(map_data, zoom=13, use_container_width=True)
 
 with col2:
+    st.info(f"📍 **Shibuya Station**")
+    st.caption(f"Lat: {config.SHIBUYA_LAT:.4f}")
+    st.caption(f"Lon: {config.SHIBUYA_LON:.4f}")
+    st.caption("Coverage: 500m radius")
+
+with col3:
     tokyo_tz = pytz.timezone('Asia/Tokyo')
     current_time = datetime.now(tokyo_tz)
     st.metric("🕐 Tokyo Time", current_time.strftime("%H:%M"))
