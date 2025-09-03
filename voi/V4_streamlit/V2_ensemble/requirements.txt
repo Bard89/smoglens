@@ -1,0 +1,10 @@
+streamlit==1.35.0
+streamlit-folium==0.20.0
+pandas==2.2.2
+numpy==1.26.4
+plotly==5.22.0
+pytz==2024.1
+joblib==1.4.2
+scikit-learn==1.7.1
+lightgbm==4.3.0
+folium==0.16.0
