@@ -4,17 +4,26 @@ import os
 
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / 'data'
+MODEL_DIR = BASE_DIR / 'models'
 
 SHIBUYA_LAT = 35.6580
 SHIBUYA_LON = 139.7016
 SHIBUYA_HEXAGON = '872e44d04ffffff'
 
+# For Streamlit Cloud deployment
 if os.getenv('STREAMLIT_CLOUD'):
-    DATA_PATH = BASE_DIR / 'data' / 'shibuya_2024.csv.gz'
-    MODEL_DIR = BASE_DIR / 'models'
+    # Option 1: Use sample data in repo
+    DATA_PATH = BASE_DIR / 'data' / 'sample_data.csv'
+    
+    # Option 2: Load from cloud storage
+    # DATA_PATH = 'https://your-storage.com/pm25_data.csv'
+    
+    # Option 3: Use Streamlit secrets for private data
+    # import streamlit as st
+    # DATA_PATH = st.secrets["data_url"]
 else:
+    # Local development
     DATA_PATH = '/Users/vojtech/Code/Bard89/smoglens-02/data/pm25_enriched_2023_2025_v4_20250830_222050.csv'
-    MODEL_DIR = Path('/Users/vojtech/Code/Bard89/smoglens-02/voi/v4_multiyear/05_modeling/02_advanced/01_ensemble_training/trained')
 
 ACTIVITY_LIMITS = {
     'Running': 10,

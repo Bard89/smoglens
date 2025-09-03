@@ -5,6 +5,8 @@ import pickle
 from datetime import datetime, timedelta
 import pytz
 import config
+import os
+import gc
 
 class DataProcessor:
     def __init__(self):
@@ -15,18 +17,36 @@ class DataProcessor:
         self.neighbor_cache_path = config.DATA_DIR / 'neighbor_cache.pkl'
         
     def load_data(self):
-        if self.cache_path.exists():
+        if os.getenv('STREAMLIT_CLOUD'):
+            print("Loading data for Streamlit Cloud...")
+            essential_cols = ['timestamp', 'hex7_id', 'pm25_ugm3_mean', 
+                            'temperature_c_mean', 'humidity_pct_mean', 
+                            'pressure_hpa_mean', 'avg_traffic_volume', 
+                            'congestion_index', 'cloud_cover_pct_mean']
+            
+            df = pd.read_csv(config.DATA_PATH,
+                           parse_dates=['timestamp'],
+                           dtype={'hex7_id': str},
+                           usecols=lambda x: x in essential_cols,
+                           compression='gzip')
+            
+            df = df[df['timestamp'].dt.minute == 0]
+            gc.collect()
+        elif self.cache_path.exists():
             self.data = pd.read_parquet(self.cache_path)
+            self.shibuya_data = self.data[self.data['hex7_id'] == config.SHIBUYA_HEXAGON].copy()
+            return self.data
         else:
             print("Loading raw data...")
             df = pd.read_csv(config.DATA_PATH, 
                            parse_dates=['timestamp'],
                            dtype={'hex7_id': str})
-            
-            df = df.sort_values(['hex7_id', 'timestamp'])
-            df['pm25'] = df['pm25_ugm3_mean'].clip(upper=config.PM25_CAP)
-            
-            self.data = df
+        
+        df = df.sort_values(['hex7_id', 'timestamp'])
+        df['pm25'] = df['pm25_ugm3_mean'].clip(upper=config.PM25_CAP)
+        
+        self.data = df
+        if not os.getenv('STREAMLIT_CLOUD'):
             self.save_cache()
         
         self.shibuya_data = self.data[self.data['hex7_id'] == config.SHIBUYA_HEXAGON].copy()
