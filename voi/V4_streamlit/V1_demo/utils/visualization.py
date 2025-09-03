@@ -14,13 +14,13 @@ def create_activity_prediction_chart(predictions, activity_threshold, activity_n
         x=predictions['time'],
         y=predictions['pm25'],
         mode='markers+lines',
-        name='PM2.5 Level',
+        name='<b>PM2.5 Level</b>',
         marker=dict(
             size=10,
             color=colors,
             line=dict(color='white', width=1.5)
         ),
-        line=dict(color='#64748B', width=2.5),
+        line=dict(color='#334155', width=2.5),
         hovertemplate='<b>%{x|%H:%M}</b><br>PM2.5: %{y:.1f} μg/m³<extra></extra>'
     ))
     
@@ -44,7 +44,7 @@ def create_activity_prediction_chart(predictions, activity_threshold, activity_n
             fill='tonexty',
             mode='lines',
             line_color='rgba(0,0,0,0)',
-            name='95% Confidence',
+            name='<b>95% Confidence</b>',
             fillcolor='rgba(100, 116, 139, 0.15)',
             hoverinfo='skip'
         ))
@@ -102,16 +102,11 @@ def create_activity_prediction_chart(predictions, activity_threshold, activity_n
     )
     
     fig.update_layout(
-        title=dict(
-            text=f"<b>6-Hour PM2.5 Forecast</b>",
-            font=dict(size=22, family='system-ui, -apple-system, sans-serif', color='#1F2937'),
-            x=0,
-            xanchor='left'
-        ),
+        title=None,
         xaxis=dict(
             title=dict(
                 text='Time (Tokyo)',
-                font=dict(size=16, family='system-ui, -apple-system, sans-serif', color='#374151')
+                font=dict(size=16, family='system-ui, -apple-system, sans-serif', color='#111827', weight=500)
             ),
             tickformat='%H:%M',
             dtick=3600000,
@@ -119,24 +114,24 @@ def create_activity_prediction_chart(predictions, activity_threshold, activity_n
             gridcolor='rgba(0, 0, 0, 0.08)',
             gridwidth=1,
             zeroline=False,
-            tickfont=dict(size=14, family='system-ui, -apple-system, sans-serif', color='#4B5563'),
-            linecolor='#E5E7EB',
+            tickfont=dict(size=14, family='system-ui, -apple-system, sans-serif', color='#1F2937'),
+            linecolor='#9CA3AF',
             linewidth=2
         ),
         yaxis=dict(
             title=dict(
                 text='PM2.5 Concentration (μg/m³)',
-                font=dict(size=16, family='system-ui, -apple-system, sans-serif', color='#374151')
+                font=dict(size=16, family='system-ui, -apple-system, sans-serif', color='#111827', weight=500)
             ),
             range=[0, y_max],
             showgrid=True,
             gridcolor='rgba(0, 0, 0, 0.08)',
             gridwidth=1,
             zeroline=True,
-            zerolinecolor='#E5E7EB',
+            zerolinecolor='#9CA3AF',
             zerolinewidth=2,
-            tickfont=dict(size=14, family='system-ui, -apple-system, sans-serif', color='#4B5563'),
-            linecolor='#E5E7EB',
+            tickfont=dict(size=14, family='system-ui, -apple-system, sans-serif', color='#1F2937'),
+            linecolor='#9CA3AF',
             linewidth=2
         ),
         height=500,
@@ -148,9 +143,9 @@ def create_activity_prediction_chart(predictions, activity_threshold, activity_n
             xanchor="left",
             x=0.02,
             bgcolor="rgba(255,255,255,0.95)",
-            bordercolor='#E5E7EB',
+            bordercolor='#9CA3AF',
             borderwidth=1,
-            font=dict(size=13, family='system-ui, -apple-system, sans-serif')
+            font=dict(size=14, family='system-ui, -apple-system, sans-serif', color='#1F2937')
         ),
         paper_bgcolor='white',
         plot_bgcolor='white',
