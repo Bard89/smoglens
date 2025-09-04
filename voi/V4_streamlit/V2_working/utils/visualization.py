@@ -41,7 +41,7 @@ def create_activity_prediction_chart(predictions_df, activity_threshold, activit
             fill='tonexty',
             mode='lines',
             line_color='rgba(0,0,0,0)',
-            name='<b>95% Confidence</b>',
+            name='<b>±MAE</b>',
             fillcolor='rgba(100, 116, 139, 0.15)',
             hoverinfo='skip'
         ))

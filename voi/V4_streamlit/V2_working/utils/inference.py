@@ -49,12 +49,10 @@ class SimplePredictor:
         
         pred_value = np.clip(pred_value, 0, config.PM25_CAP)
         
-        std_dev = np.std([lgb_pred[0] if isinstance(lgb_pred, np.ndarray) else lgb_pred,
-                         xgb_pred[0] if isinstance(xgb_pred, np.ndarray) else xgb_pred,
-                         cat_pred[0] if isinstance(cat_pred, np.ndarray) else cat_pred])
+        mae = config.HORIZON_MAE.get(horizon, 3.0)
         
-        lower = float(np.clip(pred_value - 1.96 * std_dev, 0, config.PM25_CAP))
-        upper = float(np.clip(pred_value + 1.96 * std_dev, 0, config.PM25_CAP))
+        lower = float(np.clip(pred_value - mae, 0, config.PM25_CAP))
+        upper = float(np.clip(pred_value + mae, 0, config.PM25_CAP))
         
         return pred_value, (lower, upper)
     

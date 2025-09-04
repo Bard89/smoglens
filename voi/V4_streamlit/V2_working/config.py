@@ -26,6 +26,15 @@ ACTIVITY_LIMITS = {
 
 HORIZONS = ['1h', '2h', '3h', '4h', '5h', '6h']
 
+HORIZON_MAE = {
+    '1h': 2.5,
+    '2h': 2.8,
+    '3h': 3.1,
+    '4h': 3.4,
+    '5h': 3.7,
+    '6h': 4.0
+}
+
 LAG_HOURS = [1, 2, 3, 4, 5, 6, 12, 24, 48, 72, 168]
 ROLLING_WINDOWS = [3, 6, 12, 24, 48]
 EWM_ALPHAS = [0.1, 0.3, 0.5]

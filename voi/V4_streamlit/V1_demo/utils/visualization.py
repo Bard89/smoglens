@@ -24,9 +24,9 @@ def create_activity_prediction_chart(predictions, activity_threshold, activity_n
         hovertemplate='<b>%{x|%H:%M}</b><br>PM2.5: %{y:.1f} μg/m³<extra></extra>'
     ))
     
-    if 'std_error' in predictions.columns and predictions['std_error'].iloc[1] > 0:
-        upper_bound = predictions['pm25'] + 1.96 * predictions['std_error']
-        lower_bound = (predictions['pm25'] - 1.96 * predictions['std_error']).clip(lower=0)
+    if 'mae' in predictions.columns:
+        upper_bound = (predictions['pm25'] + predictions['mae']).clip(upper=53)
+        lower_bound = (predictions['pm25'] - predictions['mae']).clip(lower=0)
         
         fig.add_trace(go.Scatter(
             x=predictions['time'],
@@ -44,7 +44,7 @@ def create_activity_prediction_chart(predictions, activity_threshold, activity_n
             fill='tonexty',
             mode='lines',
             line_color='rgba(0,0,0,0)',
-            name='<b>95% Confidence</b>',
+            name='<b>±MAE</b>',
             fillcolor='rgba(100, 116, 139, 0.15)',
             hoverinfo='skip'
         ))

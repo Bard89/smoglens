@@ -86,7 +86,7 @@ pm25_values = np.clip(pm25_values, 3, 60)
 predictions = pd.DataFrame({
     'time': prediction_times,
     'pm25': pm25_values,
-    'std_error': np.linspace(2, 4, 6)
+    'mae': [2.5, 2.8, 3.1, 3.4, 3.7, 4.0]
 })
 
 fig = create_activity_prediction_chart(

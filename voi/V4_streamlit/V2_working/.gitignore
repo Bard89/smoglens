@@ -1,0 +1,16 @@
+# Model files (too large for git)
+models/*.pkl
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Data cache
+data/*.parquet
+data/neighbor_cache.pkl
+
+# Temporary files
+*.tmp
+.DS_Store
