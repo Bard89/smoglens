@@ -71,23 +71,26 @@ st.caption(f"Threshold: {threshold} μg/m³ - {activities[activity][1]}")
 st.divider()
 st.subheader("6-Hour PM2.5 Forecast")
 
-tokyo_tz = pytz.timezone('Asia/Tokyo')
-current_time_tokyo = datetime.now(tokyo_tz)
+if 'predictions_generated' not in st.session_state:
+    tokyo_tz = pytz.timezone('Asia/Tokyo')
+    current_time_tokyo = datetime.now(tokyo_tz)
 
-next_hour = current_time_tokyo.replace(minute=0, second=0, microsecond=0) + pd.Timedelta(hours=1)
-prediction_times = [next_hour + pd.Timedelta(hours=i) for i in range(6)]
+    next_hour = current_time_tokyo.replace(minute=0, second=0, microsecond=0) + pd.Timedelta(hours=1)
+    prediction_times = [next_hour + pd.Timedelta(hours=i) for i in range(6)]
 
-base_value = latest_pm25
-trend = np.random.choice([-1, 1]) * np.random.uniform(1.5, 3.5)
-noise = np.random.normal(0, 1.5, 6)
-pm25_values = base_value + np.arange(1, 7) * trend + noise
-pm25_values = np.clip(pm25_values, 3, 60)
+    base_value = latest_pm25
+    trend = np.random.choice([-1, 1]) * np.random.uniform(1.5, 3.5)
+    noise = np.random.normal(0, 1.5, 6)
+    pm25_values = base_value + np.arange(1, 7) * trend + noise
+    pm25_values = np.clip(pm25_values, 3, 60)
 
-predictions = pd.DataFrame({
-    'time': prediction_times,
-    'pm25': pm25_values,
-    'std_error': np.linspace(2, 4, 6)
-})
+    st.session_state.predictions_generated = pd.DataFrame({
+        'time': prediction_times,
+        'pm25': pm25_values,
+        'mae': [2.5, 2.8, 3.1, 3.4, 3.7, 4.0]
+    })
+
+predictions = st.session_state.predictions_generated
 
 fig = create_activity_prediction_chart(
     predictions,
