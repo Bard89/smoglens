@@ -53,14 +53,7 @@ def create_activity_prediction_chart(predictions, activity_threshold, activity_n
         y=activity_threshold,
         line_dash="dash",
         line_color="#DC2626",
-        line_width=2,
-        annotation_text=f"  {activity_name} Limit: {activity_threshold} μg/m³",
-        annotation_position="right",
-        annotation=dict(
-            font=dict(size=14, color='#DC2626', family='system-ui, -apple-system, sans-serif'),
-            bgcolor='rgba(255, 255, 255, 0.95)',
-            borderpad=6
-        )
+        line_width=2
     )
     
     fig.add_hrect(
