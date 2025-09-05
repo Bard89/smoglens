@@ -4,8 +4,6 @@ The goal is to predict the next few hours of PM2.5 particle concentration in any
 
 Baseline is the available last hour of data. So we want to be better than the last datapoint.
 
-The data were collected and preprocessed using -> https://github.com/Bard89/air-quality-pipeline
-
 ## Setup (macOS)
 
 ```bash
