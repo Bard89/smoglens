@@ -2,8 +2,6 @@
 
 The goal is to predict the next few hours of PM2.5 particle concentration in any place in Japan better than baseline. 
 
-Baseline is the available last hour of data. So we want to be better than the last datapoint.
-
 ## Setup (macOS)
 
 ```bash
