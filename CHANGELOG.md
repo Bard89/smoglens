@@ -15,6 +15,7 @@
 - Additional data sources integration w/ new features
   - Explore and potentially add features from other already downloaded datasets.
   - Get more data from elsewhere. Need some outside of Japan pm2.5 measurements to be able to predict delayed transmission to Japan. Potentially data from Korea we have already or some low res satelite data paired with weather.
+  - Yellow dust dataset from the Climate Data Store API (NetCDF zip, Copernicus Atmosphere Monitoring Service), including PM2.5, PM10, and wind from China (earlier exploration preserved in git history).
 
 ━━━━━━ WE ARE HERE 02/09/2025 ━━━━━━
 
