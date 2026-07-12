@@ -43,6 +43,5 @@ WEATHER_COLS = ['temperature_c_mean', 'humidity_pct_mean', 'pressure_hpa_mean',
 TRAFFIC_COLS = ['avg_traffic_volume', 'congestion_index']
 
 K_NEIGHBORS = 10
-MAX_SEARCH_RADIUS = 3
 
 PM25_CAP = 53.0

@@ -1,4 +1,5 @@
 import sys
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -24,3 +25,13 @@ def test_app_runs_without_uncaught_exception(local_data_available):
     app_test = AppTest.from_file(str(APP_DIR / "app.py"), default_timeout=300)
     app_test.run()
     assert not app_test.exception
+
+
+def test_app_prediction_path_renders_without_errors(local_data_available):
+    app_test = AppTest.from_file(str(APP_DIR / "app.py"), default_timeout=300)
+    app_test.run()
+    app_test.checkbox[0].uncheck().run()
+    app_test.date_input[0].set_value(date(2024, 6, 1))
+    app_test.run()
+    assert not app_test.exception
+    assert not app_test.error

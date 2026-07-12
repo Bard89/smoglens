@@ -6,8 +6,6 @@ import config
 class SpatialImputer:
     def __init__(self, data_processor):
         self.data_processor = data_processor
-        self.neighbor_distances = None
-        self.cache_path = config.DATA_DIR / 'spatial_cache.pkl'
         
     def calculate_hex_distance(self, hex1: str, hex2: str) -> float:
         lat_lon1 = h3.cell_to_latlng(hex1)

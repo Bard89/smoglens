@@ -23,7 +23,7 @@ class SimplePredictor:
             if model_path.exists():
                 self.models[horizon] = joblib.load(model_path)
     
-    def predict_horizon(self, features_df, features_array, horizon):
+    def predict_horizon(self, features_array, horizon):
         if horizon not in self.models:
             return np.nan, (np.nan, np.nan)
         
@@ -71,7 +71,7 @@ class SimplePredictor:
         confidence_intervals = {}
         
         for horizon in config.HORIZONS:
-            pred, ci = self.predict_horizon(features_df, features_array, horizon)
+            pred, ci = self.predict_horizon(features_array, horizon)
             predictions[horizon] = pred
             confidence_intervals[horizon] = ci
         
