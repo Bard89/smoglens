@@ -1,10 +1,10 @@
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
-import pytz
 import streamlit as st
 
 sys.path.append(str(Path(__file__).parent))
@@ -19,6 +19,8 @@ from smoglens.spatial import SpatialImputer
 from smoglens.visualization import create_activity_prediction_chart
 
 st.set_page_config(page_title="SmogLens", page_icon="🏃", layout="wide")
+
+TOKYO_TZ = ZoneInfo("Asia/Tokyo")
 
 
 @st.cache_resource
@@ -45,8 +47,7 @@ with st.sidebar:
     use_current_time = st.checkbox("Use current time", value=True)
 
     if use_current_time:
-        tokyo_tz = pytz.timezone("Asia/Tokyo")
-        selected_datetime = datetime.now(tokyo_tz)
+        selected_datetime = datetime.now(TOKYO_TZ)
     else:
         selected_date = st.date_input(
             "Date",
@@ -57,9 +58,7 @@ with st.sidebar:
 
         selected_time = st.time_input("Time", value=datetime.now().time())
 
-        selected_datetime = datetime.combine(selected_date, selected_time)
-        tokyo_tz = pytz.timezone("Asia/Tokyo")
-        selected_datetime = tokyo_tz.localize(selected_datetime)
+        selected_datetime = datetime.combine(selected_date, selected_time, tzinfo=TOKYO_TZ)
 
     st.info(f"Selected: {selected_datetime.strftime('%Y-%m-%d %H:%M')} JST")
 
@@ -142,40 +141,27 @@ with st.spinner("Generating predictions..."):
 
             predictions, confidence_intervals = model_predictor.predict_all(last_features)
 
-            prediction_times = []
-            pm25_values = []
-            lower_bounds = []
-            upper_bounds = []
-
-            for horizon in HORIZONS:
-                hours_ahead = int(horizon[:-1])
-                pred_time = selected_datetime + timedelta(hours=hours_ahead)
-                prediction_times.append(pred_time)
-                pm25_values.append(predictions[horizon])
-                lower_bounds.append(confidence_intervals[horizon][0])
-                upper_bounds.append(confidence_intervals[horizon][1])
-
             predictions_df = pd.DataFrame(
-                {"time": prediction_times, "pm25": pm25_values, "lower": lower_bounds, "upper": upper_bounds}
+                {
+                    "time": [selected_datetime + timedelta(hours=int(horizon[:-1])) for horizon in HORIZONS],
+                    "pm25": [predictions[horizon] for horizon in HORIZONS],
+                    "lower": [confidence_intervals[horizon][0] for horizon in HORIZONS],
+                    "upper": [confidence_intervals[horizon][1] for horizon in HORIZONS],
+                }
             )
 
-            fig = create_activity_prediction_chart(
-                predictions_df, activity_threshold=threshold, activity_name=activity_key
-            )
+            fig = create_activity_prediction_chart(predictions_df, activity_threshold=threshold)
 
             st.plotly_chart(fig, use_container_width=True)
 
             safe_hours = predictions_df[predictions_df["pm25"] < threshold]
 
             col1, col2 = st.columns(2)
-            with col1:
-                st.metric("Safe Hours", f"{len(safe_hours)}/6")
-            with col2:
-                if len(safe_hours) > 0:
-                    best_hour = safe_hours.loc[safe_hours["pm25"].idxmin()]
-                    st.metric("Best Time", best_hour["time"].strftime("%H:%M"))
+            col1.metric("Safe Hours", f"{len(safe_hours)}/6")
 
             if len(safe_hours) > 0:
+                best_hour = safe_hours.loc[safe_hours["pm25"].idxmin()]
+                col2.metric("Best Time", best_hour["time"].strftime("%H:%M"))
                 st.success(
                     f"✅ Good conditions for {activity} - {len(safe_hours)}/6 hours within safe limits"
                 )

@@ -23,7 +23,6 @@ dependencies = [
 app = [
     "streamlit==1.39.0",
     "plotly==6.3.0",
-    "pytz==2025.2",
 ]
 dev = [
     "smoglens[app]",
@@ -57,7 +56,6 @@ where = ["src"]
 
 [tool.ruff]
 line-length = 110
-target-version = "py311"
 extend-exclude = ["notebooks", "apps/V1_demo", "yulia", "*.ipynb"]
 
 [tool.ruff.lint]

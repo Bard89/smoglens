@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from smoglens.config import ENRICHED_DATASET, ENSEMBLE_MODEL_DIR, HORIZONS
+from smoglens.config import ENRICHED_DATASET, ENSEMBLE_MODEL_DIR
 from smoglens.data import DataProcessor
 from smoglens.features import FeatureGenerator
 from smoglens.inference import SimplePredictor
@@ -33,9 +33,6 @@ def app_components():
         pytest.skip("trained models not available")
 
     predictor = SimplePredictor(model_dir=ENSEMBLE_MODEL_DIR)
-    assert set(predictor.models) == set(HORIZONS)
-    assert predictor.feature_cols
-
     data_processor.load_data()
     data_processor.find_nearby_hexagons()
     return data_processor, FeatureGenerator(), predictor

@@ -1,7 +1,6 @@
 import hashlib
 import json
 import platform
-import sys
 from importlib.metadata import version
 from pathlib import Path
 
@@ -86,4 +85,4 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

@@ -37,7 +37,7 @@ class SpatialImputer:
         neighbors_with_data.sort(key=lambda x: x[1])
         return neighbors_with_data[: config.K_NEIGHBORS]
 
-    def impute_value(self, target_hex: str, timestamp: pd.Timestamp, column: str = "pm25") -> float | None:
+    def impute_value(self, target_hex: str, timestamp: pd.Timestamp, column: str) -> float | None:
         existing_data = self.data_processor.data[
             (self.data_processor.data["hex7_id"] == target_hex)
             & (self.data_processor.data["timestamp"] == timestamp)
@@ -65,16 +65,7 @@ class SpatialImputer:
 
         return None
 
-    def impute_dataframe(self, df: pd.DataFrame, columns: list[str] = None) -> pd.DataFrame:
-        if columns is None:
-            columns = [
-                "pm25_ugm3_mean",
-                "temperature_c_mean",
-                "humidity_pct_mean",
-                "pressure_hpa_mean",
-                "avg_traffic_volume",
-            ]
-
+    def impute_dataframe(self, df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
         df = df.copy()
 
         for col in columns:

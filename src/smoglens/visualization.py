@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 
 
-def create_activity_prediction_chart(predictions_df, activity_threshold, activity_name):
+def create_activity_prediction_chart(predictions_df, activity_threshold):
     fig = go.Figure()
 
     safe_color = "#10B981"
@@ -20,31 +20,29 @@ def create_activity_prediction_chart(predictions_df, activity_threshold, activit
         )
     )
 
-    if "lower" in predictions_df.columns and "upper" in predictions_df.columns:
-        fig.add_trace(
-            go.Scatter(
-                x=predictions_df["time"],
-                y=predictions_df["upper"],
-                fill=None,
-                mode="lines",
-                line_color="rgba(0,0,0,0)",
-                showlegend=False,
-                hoverinfo="skip",
-            )
+    fig.add_trace(
+        go.Scatter(
+            x=predictions_df["time"],
+            y=predictions_df["upper"],
+            mode="lines",
+            line_color="rgba(0,0,0,0)",
+            showlegend=False,
+            hoverinfo="skip",
         )
+    )
 
-        fig.add_trace(
-            go.Scatter(
-                x=predictions_df["time"],
-                y=predictions_df["lower"],
-                fill="tonexty",
-                mode="lines",
-                line_color="rgba(0,0,0,0)",
-                name="<b>±MAE</b>",
-                fillcolor="rgba(100, 116, 139, 0.15)",
-                hoverinfo="skip",
-            )
+    fig.add_trace(
+        go.Scatter(
+            x=predictions_df["time"],
+            y=predictions_df["lower"],
+            fill="tonexty",
+            mode="lines",
+            line_color="rgba(0,0,0,0)",
+            name="<b>±MAE</b>",
+            fillcolor="rgba(100, 116, 139, 0.15)",
+            hoverinfo="skip",
         )
+    )
 
     fig.add_hline(y=activity_threshold, line_dash="dash", line_color="#DC2626", line_width=2)
 
