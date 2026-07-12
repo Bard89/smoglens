@@ -1,5 +1,14 @@
 {
-  "description": "Golden predictions pinning V2_working app behavior; generated under Python 3.10.6 with the lib versions in pyproject.toml",
+  "description": "Golden values pinning V2_working app behavior during the cleanup refactor",
+  "environment": {
+    "generated_under": "Python 3.10.6",
+    "verified_under": "Python 3.11.13",
+    "numpy": "2.2.6",
+    "pandas": "2.3.1",
+    "lightgbm": "4.6.0",
+    "xgboost": "3.0.4",
+    "catboost": "1.2.8"
+  },
   "feature_cols": [
     "avg_traffic_volume",
     "max_traffic_volume",
@@ -75,6 +84,7 @@
     {
       "timestamp": "2024-06-01 12:00:00",
       "n_historical_rows": 155,
+      "current_pm25": "9.0",
       "model_input": {
         "avg_traffic_volume": "56.342201232910156",
         "max_traffic_volume": "179.1782068496601",
@@ -184,6 +194,7 @@
     {
       "timestamp": "2024-11-03 22:00:00",
       "n_historical_rows": 153,
+      "current_pm25": "5.0",
       "model_input": {
         "avg_traffic_volume": "21.085054397583008",
         "max_traffic_volume": "94.56531361056192",
@@ -293,6 +304,7 @@
     {
       "timestamp": "2025-01-15 08:00:00",
       "n_historical_rows": 155,
+      "current_pm25": "2.0",
       "model_input": {
         "avg_traffic_volume": "67.04976654052734",
         "max_traffic_volume": "197.3849155679812",

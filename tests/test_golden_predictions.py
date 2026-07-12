@@ -9,8 +9,6 @@ REPO_ROOT = Path(__file__).parents[1]
 APP_DIR = REPO_ROOT / "voi" / "V4_streamlit" / "V2_working"
 FIXTURE_PATH = Path(__file__).parent / "fixtures" / "golden_predictions.json"
 
-sys.path.insert(0, str(APP_DIR))
-
 FIXTURE = json.loads(FIXTURE_PATH.read_text())
 
 
@@ -23,20 +21,22 @@ def floats_match(expected_repr, actual):
 
 @pytest.fixture(scope="module")
 def app_components():
+    sys.path.insert(0, str(APP_DIR))
     import config
     from utils.data_processor import DataProcessor
     from utils.feature_generator import FeatureGenerator
     from utils.inference import SimplePredictor
 
-    processed_cache = config.DATA_DIR / "shibuya_processed.parquet"
-    if not (Path(config.DATA_PATH).exists() or processed_cache.exists()):
+    data_processor = DataProcessor()
+    if not (Path(config.DATA_PATH).exists() or data_processor.cache_path.exists()):
         pytest.skip("local dataset not available")
-
-    predictor = SimplePredictor()
-    if not predictor.models:
+    if not (config.MODEL_DIR / "models_1h.pkl").exists():
         pytest.skip("trained models not available")
 
-    data_processor = DataProcessor()
+    predictor = SimplePredictor()
+    assert set(predictor.models) == set(config.HORIZONS)
+    assert predictor.feature_cols
+
     data_processor.load_data()
     data_processor.find_nearby_hexagons()
     return data_processor, FeatureGenerator(), predictor
@@ -62,6 +62,7 @@ def golden_runs(app_components):
         predictions, confidence_intervals = predictor.predict_all(last_features)
         runs[case["timestamp"]] = {
             "n_historical_rows": len(historical_data),
+            "current_pm25": float(data_processor.get_data_at_time(timestamp)["pm25"]),
             "model_input": model_input,
             "predictions": predictions,
             "confidence_intervals": confidence_intervals,
@@ -69,9 +70,20 @@ def golden_runs(app_components):
     return runs
 
 
+def test_feature_columns_unchanged(app_components):
+    _, _, predictor = app_components
+    assert predictor.feature_cols == FIXTURE["feature_cols"]
+
+
 @pytest.mark.parametrize("case", FIXTURE["cases"], ids=lambda c: c["timestamp"])
 def test_historical_window_size_unchanged(case, golden_runs):
     assert golden_runs[case["timestamp"]]["n_historical_rows"] == case["n_historical_rows"]
+
+
+@pytest.mark.parametrize("case", FIXTURE["cases"], ids=lambda c: c["timestamp"])
+def test_current_pm25_unchanged(case, golden_runs):
+    actual = golden_runs[case["timestamp"]]["current_pm25"]
+    assert floats_match(case["current_pm25"], actual), f"expected {case['current_pm25']}, got {actual}"
 
 
 @pytest.mark.parametrize("case", FIXTURE["cases"], ids=lambda c: c["timestamp"])
