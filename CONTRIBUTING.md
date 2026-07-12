@@ -1,5 +1,21 @@
 # Contributing Guidelines
 
+## Development Setup
+
+```bash
+pip install -e ".[dev]"
+pre-commit install
+```
+
+Run checks before pushing:
+
+```bash
+ruff check . && ruff format --check .
+pytest
+```
+
+The golden prediction tests in `tests/` pin exact model outputs; if one fails after your change, the change altered prediction behavior.
+
 ## Git Flow Workflow
 
 This project follows Git Flow. Please adhere to these guidelines:

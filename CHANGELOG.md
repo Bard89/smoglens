@@ -1,5 +1,14 @@
 ## Unreleased
 
+### [0.2.0] - 2026-07-12 - Cleanup Refactor
+- Behavior-preserving cleanup; predictions are bit-identical, verified by new golden tests
+- New `src/smoglens` package (installable via `pyproject.toml`, Python 3.11): config, data access, feature generation, ensemble inference, spatial imputation, visualization — one implementation shared by the app and tests
+- Repository restructured: research iterations frozen under [notebooks/](notebooks) (lineage in [notebooks/README.md](notebooks/README.md)), Streamlit apps under [apps/](apps)
+- Data and models consolidated into one external directory resolved via `SMOGLENS_DATA_PATH` (hardcoded machine-specific paths removed)
+- Test suite added: golden prediction tests (pin exact model outputs), Streamlit AppTest smoke tests, data-layout/manifest contract tests
+- Tooling: ruff + pre-commit, GitHub Actions CI, single dependency authority in `pyproject.toml`
+- Removed dead code: unused predictor class, unused config module, dead methods/imports, tracked bytecode
+
 ━━━━━━ PROJECT PRESENTATION SUBMISSION THU 05/09/2025 ━━━━━━
 
 ### [0.1.1] - V5 Extended Feature Enrichment (Planned)
