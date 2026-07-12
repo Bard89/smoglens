@@ -1,6 +1,8 @@
 import hashlib
 import json
+import platform
 import sys
+from importlib.metadata import version
 from pathlib import Path
 
 import pandas as pd
@@ -59,13 +61,8 @@ def build_golden_cases():
     return {
         "description": "Golden values pinning V2_working app behavior during the cleanup refactor",
         "environment": {
-            "generated_under": "Python 3.10.6",
-            "verified_under": "Python 3.11.13",
-            "numpy": "2.2.6",
-            "pandas": "2.3.1",
-            "lightgbm": "4.6.0",
-            "xgboost": "3.0.4",
-            "catboost": "1.2.8",
+            "python": platform.python_version(),
+            **{lib: version(lib) for lib in ["numpy", "pandas", "lightgbm", "xgboost", "catboost"]},
         },
         "feature_cols": predictor.feature_cols,
         "cases": cases,

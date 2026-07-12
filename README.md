@@ -18,11 +18,13 @@ yulia/            teammate research (Prophet, yellow dust / CAMS)
 ## Setup (macOS)
 
 ```bash
-brew install pyenv
+brew install pyenv pyenv-virtualenv
+
+git clone git@github.com:Bard89/smoglens.git
+cd smoglens
 
 pyenv install 3.11.13
 pyenv virtualenv 3.11.13 smoglens311
-cd smoglens
 pip install -e ".[dev]"
 ```
 

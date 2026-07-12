@@ -14,7 +14,7 @@ ruff check . && ruff format --check .
 pytest
 ```
 
-The golden prediction tests in `tests/` pin exact model outputs; if one fails after your change, the change altered prediction behavior.
+The golden prediction tests in `tests/` pin exact model outputs; if one fails after your change, the change altered prediction behavior. CI runs without the local dataset, so data-dependent tests skip there and only execute on machines with `SMOGLENS_DATA_PATH` populated.
 
 ## Git Flow Workflow
 

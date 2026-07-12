@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "smoglens"
-version = "0.1.0"
+version = "0.2.0"
 description = "PM2.5 concentration prediction for Japan on H3 hexagons"
 requires-python = ">=3.11"
 dependencies = [
@@ -28,7 +28,7 @@ app = [
 dev = [
     "smoglens[app]",
     "pytest>=8",
-    "ruff>=0.15",
+    "ruff>=0.15,<0.16",
     "pre-commit>=4",
 ]
 research = [
