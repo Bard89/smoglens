@@ -26,6 +26,7 @@ app = [
     "pytz==2025.2",
 ]
 dev = [
+    "smoglens[app]",
     "pytest>=8",
     "ruff>=0.15",
     "pre-commit>=4",
