@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 import config
 
@@ -104,14 +103,3 @@ class FeatureGenerator:
                 feature_cols.append(col)
         
         return feature_cols
-    
-    def prepare_features_for_prediction(self, df):
-        df = self.generate_features(df)
-        
-        missing_cols = []
-        for col in self.feature_cols:
-            if col not in df.columns:
-                df[col] = 0.0
-                missing_cols.append(col)
-        
-        return df[self.feature_cols]

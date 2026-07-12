@@ -1,5 +1,4 @@
 from pathlib import Path
-import numpy as np
 import os
 
 BASE_DIR = Path(__file__).parent

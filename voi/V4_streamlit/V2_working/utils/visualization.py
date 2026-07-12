@@ -1,6 +1,4 @@
 import plotly.graph_objects as go
-import pandas as pd
-import numpy as np
 
 def create_activity_prediction_chart(predictions_df, activity_threshold, activity_name):
     fig = go.Figure()
