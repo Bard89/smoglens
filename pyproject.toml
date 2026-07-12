@@ -1,3 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smoglens"
+version = "0.1.0"
+description = "PM2.5 concentration prediction for Japan on H3 hexagons"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy==2.2.6",
+    "pandas==2.3.1",
+    "lightgbm==4.6.0",
+    "xgboost==3.0.4",
+    "catboost==1.2.8",
+    "joblib==1.5.1",
+    "h3==4.3.1",
+    "pyarrow==21.0.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+app = [
+    "streamlit==1.39.0",
+    "plotly==6.3.0",
+    "pytz==2025.2",
+]
+dev = [
+    "pytest>=8",
+    "ruff>=0.15",
+    "pre-commit>=4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.ruff]
 line-length = 110
 target-version = "py311"
