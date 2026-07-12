@@ -12,7 +12,6 @@ apps/V2_working/  Streamlit app with real ensemble inference (Shibuya)
 apps/V1_demo/     early design mock (random forecasts, kept as design history)
 notebooks/        frozen research log, v1_baseline -> v4_multiyear (see notebooks/README.md)
 tests/            golden prediction tests, app smoke tests, config tests
-yulia/            teammate research (Prophet, yellow dust / CAMS)
 ```
 
 ## Setup (macOS)

@@ -15,7 +15,6 @@
 - Additional data sources integration w/ new features
   - Explore and potentially add features from other already downloaded datasets.
   - Get more data from elsewhere. Need some outside of Japan pm2.5 measurements to be able to predict delayed transmission to Japan. Potentially data from Korea we have already or some low res satelite data paired with weather.
-  - This dataset from the Climate Data Store API connected the yellow dust dataset (NetCDF zip) from the Copernicus Atmosphere Monitoring Service, including PM2.5, PM10, and wind from China. [Yellow Dust Preprocessing EDA](https://github.com/Bard89/smoglens/blob/develop/yulia/V5_yellow_dust_analysis/yellow_dust_preprocessingEDA.ipynb)
 
 ━━━━━━ WE ARE HERE 02/09/2025 ━━━━━━
 
@@ -60,8 +59,7 @@
 ### [0.0.2] - 2025-08-30 - [V1 basic 2023 EDA and data enrichment](notebooks/v1_baseline)
 - Initial PM2.5 [enrichment pipeline](notebooks/v1_baseline/pm25_hexagon_enrichment_script.ipynb) with nearest-neighbor approximation for missing sensor data
 - Enrichment process: merging PM2.5, weather (temperature, humidity, precipitation), and traffic data by location into H3 hexagons.
-- Basic EDA ([JARTIC traffic](yulia/2023smoglens_traffic_data_jartic_EDAandLinearRegression.ipynb), [OpenMeteo Weather](notebooks/v1_baseline/openmeteo_eda.ipynb)) and [baseline models](notebooks/v1_baseline/pm25_AR_analysis_modeling.ipynb) (Linear Regression, AR analysis) including hexagon H3 size selection.
-- [PM2.5 Prophet model](yulia/V1_EDA_prophet/EDAonPM25.ipynb)
+- Basic EDA ([OpenMeteo Weather](notebooks/v1_baseline/openmeteo_eda.ipynb)) and [baseline models](notebooks/v1_baseline/pm25_AR_analysis_modeling.ipynb) (Linear Regression, AR analysis) including hexagon H3 size selection.
 
 ### [0.0.1] - 2025-08-03
 - Initial project setup

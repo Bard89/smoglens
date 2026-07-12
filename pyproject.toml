@@ -42,12 +42,6 @@ research = [
     "statsmodels>=0.14.0",
     "geopandas>=0.13.0",
     "folium>=0.14.0",
-    "streamlit-folium>=0.13.0",
-    "altair>=5.0.0",
-    "prophet",
-    "libpysal",
-    "esda",
-    "Pillow>=10.0.0",
     "psutil>=5.9.0",
 ]
 
@@ -56,7 +50,7 @@ where = ["src"]
 
 [tool.ruff]
 line-length = 110
-extend-exclude = ["notebooks", "apps/V1_demo", "yulia", "*.ipynb"]
+extend-exclude = ["notebooks", "apps/V1_demo", "*.ipynb"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
