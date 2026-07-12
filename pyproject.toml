@@ -38,7 +38,7 @@ where = ["src"]
 [tool.ruff]
 line-length = 110
 target-version = "py311"
-extend-exclude = ["voi", "yulia", "*.ipynb"]
+extend-exclude = ["notebooks", "apps/V1_demo", "yulia", "*.ipynb"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]

@@ -11,7 +11,7 @@ from smoglens.features import FeatureGenerator
 from smoglens.inference import SimplePredictor
 
 REPO_ROOT = Path(__file__).parents[1]
-APP_CACHE_DIR = REPO_ROOT / "voi" / "V4_streamlit" / "V2_working" / "data"
+APP_CACHE_DIR = REPO_ROOT / "apps" / "V2_working" / "data"
 FIXTURE_PATH = Path(__file__).parent / "fixtures" / "golden_predictions.json"
 
 FIXTURE = json.loads(FIXTURE_PATH.read_text())
