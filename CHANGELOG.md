@@ -1,5 +1,13 @@
 ## Unreleased
 
+### [0.1.1] - V5 Extended Feature Enrichment (Planned)
+- Additional data sources integration w/ new features
+  - Explore and potentially add features from other already downloaded datasets.
+  - Get more data from elsewhere. Need some outside of Japan pm2.5 measurements to be able to predict delayed transmission to Japan. Potentially data from Korea we have already or some low res satelite data paired with weather.
+  - Yellow dust dataset from the Climate Data Store API (NetCDF zip, Copernicus Atmosphere Monitoring Service), including PM2.5, PM10, and wind from China (earlier exploration preserved in git history).
+
+━━━━━━ WE ARE HERE 12/07/2026 ━━━━━━
+
 ### [0.2.0] - 2026-07-12 - Cleanup Refactor
 - Behavior-preserving cleanup; predictions are bit-identical, verified by new golden tests
 - New `src/smoglens` package (installable via `pyproject.toml`, Python 3.11): config, data access, feature generation, ensemble inference, spatial imputation, visualization — one implementation shared by the app and tests
@@ -11,13 +19,7 @@
 
 ━━━━━━ PROJECT PRESENTATION SUBMISSION THU 05/09/2025 ━━━━━━
 
-### [0.1.1] - V5 Extended Feature Enrichment (Planned)
-- Additional data sources integration w/ new features
-  - Explore and potentially add features from other already downloaded datasets.
-  - Get more data from elsewhere. Need some outside of Japan pm2.5 measurements to be able to predict delayed transmission to Japan. Potentially data from Korea we have already or some low res satelite data paired with weather.
-  - Yellow dust dataset from the Climate Data Store API (NetCDF zip, Copernicus Atmosphere Monitoring Service), including PM2.5, PM10, and wind from China (earlier exploration preserved in git history).
-
-━━━━━━ WE ARE HERE 02/09/2025 ━━━━━━
+[Presentation recording (Le Wagon Demo Day)](https://youtu.be/4xmj3REIGe0?si=JVKjPSs4vlxfIjxk&t=1233) · [Le Wagon project page](https://projects.lewagon.com/projects/smoglens)
 
 ### [0.1.0] - 2025-08-31 - [V4 Multi-Year Analysis (2023-2025)](notebooks/v4_multiyear) (In progress)
 - Extended temporal coverage: June 2023 - June 2025
