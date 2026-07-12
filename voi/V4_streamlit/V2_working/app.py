@@ -8,11 +8,12 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent))
 
-from utils.data_processor import DataProcessor
-from utils.feature_generator import FeatureGenerator
-from utils.inference import SimplePredictor
-from utils.spatial_imputer import SpatialImputer
-from utils.visualization import create_activity_prediction_chart
+from smoglens.config import ACTIVITY_LIMITS, HORIZONS, SHIBUYA_LAT, SHIBUYA_LON
+from smoglens.data import DataProcessor
+from smoglens.features import FeatureGenerator
+from smoglens.inference import SimplePredictor
+from smoglens.spatial import SpatialImputer
+from smoglens.visualization import create_activity_prediction_chart
 import config
 
 st.set_page_config(
@@ -23,14 +24,14 @@ st.set_page_config(
 
 @st.cache_resource
 def load_components():
-    data_processor = DataProcessor()
+    data_processor = DataProcessor(data_path=config.DATA_PATH, cache_dir=config.DATA_DIR)
     data_processor.load_data()
     data_processor.find_nearby_hexagons()
-    
+
     feature_generator = FeatureGenerator()
-    model_predictor = SimplePredictor()
+    model_predictor = SimplePredictor(model_dir=config.MODEL_DIR)
     spatial_imputer = SpatialImputer(data_processor)
-    
+
     return data_processor, feature_generator, model_predictor, spatial_imputer
 
 data_processor, feature_generator, model_predictor, spatial_imputer = load_components()
@@ -69,8 +70,8 @@ col1, col2 = st.columns([2, 1])
 
 with col1:
     map_data = pd.DataFrame({
-        'lat': [config.SHIBUYA_LAT],
-        'lon': [config.SHIBUYA_LON]
+        'lat': [SHIBUYA_LAT],
+        'lon': [SHIBUYA_LON]
     })
     st.map(map_data, zoom=13, use_container_width=True)
     st.caption("📍 Shibuya Station - 500m radius coverage")
@@ -110,7 +111,7 @@ activity = st.selectbox(
 )
 
 activity_key = activities[activity][0]
-threshold = config.ACTIVITY_LIMITS[activity_key]
+threshold = ACTIVITY_LIMITS[activity_key]
 
 st.caption(f"Threshold: {threshold} μg/m³ - {activities[activity][1]}")
 
@@ -140,7 +141,7 @@ with st.spinner("Generating predictions..."):
             lower_bounds = []
             upper_bounds = []
             
-            for horizon in config.HORIZONS:
+            for horizon in HORIZONS:
                 hours_ahead = int(horizon[:-1])
                 pred_time = selected_datetime + timedelta(hours=hours_ahead)
                 prediction_times.append(pred_time)
