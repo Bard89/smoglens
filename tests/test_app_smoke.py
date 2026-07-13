@@ -7,7 +7,7 @@ from streamlit.testing.v1 import AppTest
 from smoglens.config import ENRICHED_DATASET, ENSEMBLE_MODEL_DIR
 
 REPO_ROOT = Path(__file__).parents[1]
-APP_DIR = REPO_ROOT / "apps" / "V2_working"
+APP_DIR = REPO_ROOT / "apps" / "streamlit"
 
 
 @pytest.fixture(scope="module")

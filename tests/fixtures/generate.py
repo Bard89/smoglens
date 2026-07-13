@@ -12,7 +12,7 @@ from smoglens.features import FeatureGenerator
 from smoglens.inference import SimplePredictor
 
 REPO_ROOT = Path(__file__).parents[2]
-APP_CACHE_DIR = REPO_ROOT / "apps" / "V2_working" / "data"
+APP_CACHE_DIR = REPO_ROOT / "apps" / "streamlit" / "data"
 FIXTURES_DIR = Path(__file__).parent
 
 TIMESTAMPS = [
@@ -58,7 +58,7 @@ def build_golden_cases():
         )
 
     return {
-        "description": "Golden values pinning V2_working app behavior during the cleanup refactor",
+        "description": "Golden values pinning the streamlit app behavior during the cleanup refactor",
         "environment": {
             "python": platform.python_version(),
             **{lib: version(lib) for lib in ["numpy", "pandas", "lightgbm", "xgboost", "catboost"]},

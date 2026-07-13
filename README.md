@@ -24,7 +24,7 @@ Data and trained models live in one external directory, resolved from the `SMOGL
 ## Run
 
 ```bash
-streamlit run apps/V2_working/app.py
+streamlit run apps/streamlit/app.py
 ```
 
 ## Changelog
