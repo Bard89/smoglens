@@ -1,12 +1,17 @@
 import json
 import math
-import sys
 from pathlib import Path
 
+import pandas as pd
 import pytest
 
+from smoglens.config import ENRICHED_DATASET, ENSEMBLE_MODEL_DIR, HORIZONS
+from smoglens.data import DataProcessor
+from smoglens.features import FeatureGenerator
+from smoglens.inference import SimplePredictor
+
 REPO_ROOT = Path(__file__).parents[1]
-APP_DIR = REPO_ROOT / "voi" / "V4_streamlit" / "V2_working"
+APP_CACHE_DIR = REPO_ROOT / "voi" / "V4_streamlit" / "V2_working" / "data"
 FIXTURE_PATH = Path(__file__).parent / "fixtures" / "golden_predictions.json"
 
 FIXTURE = json.loads(FIXTURE_PATH.read_text())
@@ -21,20 +26,14 @@ def floats_match(expected_repr, actual):
 
 @pytest.fixture(scope="module")
 def app_components():
-    sys.path.insert(0, str(APP_DIR))
-    import config
-    from utils.data_processor import DataProcessor
-    from utils.feature_generator import FeatureGenerator
-    from utils.inference import SimplePredictor
-
-    data_processor = DataProcessor()
-    if not (Path(config.DATA_PATH).exists() or data_processor.cache_path.exists()):
+    data_processor = DataProcessor(data_path=ENRICHED_DATASET, cache_dir=APP_CACHE_DIR)
+    if not (ENRICHED_DATASET.exists() or data_processor.cache_path.exists()):
         pytest.skip("local dataset not available")
-    if not (config.MODEL_DIR / "models_1h.pkl").exists():
+    if not (ENSEMBLE_MODEL_DIR / "models_1h.pkl").exists():
         pytest.skip("trained models not available")
 
-    predictor = SimplePredictor()
-    assert set(predictor.models) == set(config.HORIZONS)
+    predictor = SimplePredictor(model_dir=ENSEMBLE_MODEL_DIR)
+    assert set(predictor.models) == set(HORIZONS)
     assert predictor.feature_cols
 
     data_processor.load_data()
@@ -44,8 +43,6 @@ def app_components():
 
 @pytest.fixture(scope="module")
 def golden_runs(app_components):
-    import pandas as pd
-
     data_processor, feature_generator, predictor = app_components
     runs = {}
     for case in FIXTURE["cases"]:
