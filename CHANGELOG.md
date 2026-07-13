@@ -1,11 +1,30 @@
-Planned work lives in [ROADMAP.md](ROADMAP.md).
+## Planned
+
+The destination: a deployed app anyone in Japan can use to see PM2.5 forecasts up to ~12 hours ahead.
+
+### [0.1.7] - External Data Enrichment
+- New data sources beyond Japan (Korea measurements, yellow dust) to capture transboundary pollution
+
+### [0.1.6] - Model Tuning
+- Iterate on the live-servable model step by step, more locations, longer horizons
+
+### [0.1.5] - Live Processing Pipeline
+- Scheduled collection feeding live data to the deployed inference
+
+### [0.1.4] - Live-Servable Model
+- Train a simpler model restricted to features whose data is obtainable live (temporal-first)
+
+### [0.1.3] - Data Sources Rebuilt In-Repo
+- Redo the air-quality-pipeline collection inside this project; determine which sources are available live
+
+### [0.1.2] - Deployed Prototype on Past Data
+- Working app with real inference from the current ensemble (precomputed predictions)
 
 ## Unreleased
 
 ### [0.1.1] - 2026-07-12 - Cleanup Refactor
 - Behavior-preserving cleanup; predictions are bit-identical, verified by new golden tests
-- Removed the departed teammate's directory (`yulia/`) and its six now-unused dependencies
-- New `src/smoglens` package (installable via `pyproject.toml`, Python 3.11): config, data access, feature generation, ensemble inference, spatial imputation, visualization — one implementation shared by the app and tests
+- New `src/smoglens` package (installable via `pyproject.toml`, Python 3.11): config, data access, feature generation, ensemble inference, spatial imputation, visualization -> one implementation shared by the app and tests
 - Repository restructured: research iterations frozen under [notebooks/](notebooks) (lineage in [notebooks/README.md](notebooks/README.md)), Streamlit apps under [apps/](apps)
 - Data and models consolidated into one external directory resolved via `SMOGLENS_DATA_PATH` (hardcoded machine-specific paths removed)
 - Test suite added: golden prediction tests (pin exact model outputs), Streamlit AppTest smoke tests, data-layout/manifest contract tests
