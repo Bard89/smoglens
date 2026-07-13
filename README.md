@@ -27,10 +27,9 @@ Data and trained models live in one external directory, resolved from the `SMOGL
 streamlit run apps/V2_working/app.py
 ```
 
-## Changelog & Roadmap
+## Changelog
 
-Version history -> [CHANGELOG.md](CHANGELOG.md). 
-What's coming next -> [ROADMAP.md](ROADMAP.md).
+Version history and planned work -> [CHANGELOG.md](CHANGELOG.md)
 
 ## Presentation
 
@@ -42,4 +41,3 @@ SmogLens was presented at the Le Wagon Demo Day on 05/09/2025 (an earlier versio
 - **oAQ**: OpenAQ (PM2.5 air quality measurements)
 - **oM**: OpenMeteo (weather data)
 - **J**: JARTIC (traffic data)
-
