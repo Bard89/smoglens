@@ -11,7 +11,7 @@ src/smoglens/     shared package: config, data access, features, inference, spat
 apps/V2_working/  Streamlit app with real ensemble inference (Shibuya)
 apps/V1_demo/     early design mock (random forecasts, kept as design history)
 notebooks/        frozen research log, v1_baseline -> v4_multiyear (see notebooks/README.md)
-tests/            golden prediction tests, app smoke tests, config tests
+tests/            golden prediction tests, app smoke tests, feature unit tests, config tests
 ```
 
 ## Setup (macOS)
@@ -53,9 +53,9 @@ pytest
 
 The golden prediction tests pin the exact model outputs and guard every refactor; they skip on machines without the local dataset and models. Regenerate fixtures with `python tests/fixtures/generate.py` (only after an intentional behavior change).
 
-## Changelog
+## Changelog & Roadmap
 
-For detailed version history and updates -> [CHANGELOG.md](CHANGELOG.md)
+Version history -> [CHANGELOG.md](CHANGELOG.md). What's coming next -> [ROADMAP.md](ROADMAP.md).
 
 ## Development Workflow
 
