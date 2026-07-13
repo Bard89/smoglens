@@ -2,7 +2,7 @@ Planned work lives in [ROADMAP.md](ROADMAP.md).
 
 ## Unreleased
 
-### [0.2.0] - 2026-07-12 - Cleanup Refactor
+### [0.1.1] - 2026-07-12 - Cleanup Refactor
 - Behavior-preserving cleanup; predictions are bit-identical, verified by new golden tests
 - Removed the departed teammate's directory (`yulia/`) and its six now-unused dependencies
 - New `src/smoglens` package (installable via `pyproject.toml`, Python 3.11): config, data access, feature generation, ensemble inference, spatial imputation, visualization — one implementation shared by the app and tests
