@@ -1,49 +1,44 @@
 # SmogLens
 
-The goal is to predict the next few hours of PM2.5 particle concentration in any place in Japan better than baseline. 
+Predict the next hours of PM2.5 concentration in Japan better than baseline.
 
-Baseline is the available last hour of data. So we want to be better than the last datapoint.
+Baseline is the last available hour of data, so the models must beat simply repeating the most recent measurement. Source data is collected and preprocessed with [air-quality-pipeline](https://github.com/Bard89/air-quality-pipeline).
 
-The data were collected and preprocessed using -> https://github.com/Bard89/air-quality-pipeline
+## Presentation
+
+SmogLens was presented at the Le Wagon Demo Day on 05/09/2025 in Tokyo (an earlier version of the project). Check out our — together with [Yuriya](https://github.com/YuriyaJP) — fantastic presentation skills on [ytb](https://youtu.be/4xmj3REIGe0?si=JVKjPSs4vlxfIjxk&t=1233)
+
+The project was also featured on Le Wagon's best [projects page](https://projects.lewagon.com/projects/smoglens)
 
 ## Setup (macOS)
 
 ```bash
-brew install pyenv
+brew install pyenv pyenv-virtualenv
 
-pyenv install 3.10.6
-pyenv virtualenv 3.10.6 smoglens
-pyenv local smoglens
+git clone git@github.com:Bard89/smoglens.git
+cd smoglens
 
-pip install -r requirements.txt
+pyenv install 3.11.13
+pyenv virtualenv 3.11.13 smoglens311
+pip install -e ".[dev]"
 ```
 
-## Data Setup
+## Data
 
-The project uses a shared data directory. Set it up with:
+Data and trained models live in one external directory, resolved from the `SMOGLENS_DATA_PATH` environment variable (set it in `.env` or your shell):
+
+## Run
 
 ```bash
-mkdir -p ~/smoglens-data
-ln -s ~/smoglens-data data # Link it to the project
+streamlit run apps/streamlit/app.py
 ```
 
 ## Changelog
 
-For detailed version history and updates -> [CHANGELOG.md](CHANGELOG.md)
+Version history and planned work -> [CHANGELOG.md](CHANGELOG.md)
 
-## Development Workflow
-Use git flow -> [CONTRIBUTING.md](CONTRIBUTING.md). 
+## Abbreviations
 
-### Quick Start with Git Flow (macOS)
-
-```bash
-brew install git-flow
-
-git flow init
-git flow feature start my-feature
-
-git push -u origin feature/my-feature
-git push
-
-# Then create PR on GitHub to merge into develop
-```
+- **oAQ**: OpenAQ (PM2.5 air quality measurements)
+- **oM**: OpenMeteo (weather data)
+- **J**: JARTIC (traffic data)

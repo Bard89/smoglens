@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smoglens"
+version = "0.1.1"
+description = "PM2.5 concentration prediction for Japan on H3 hexagons"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy==2.2.6",
+    "pandas==2.3.1",
+    "lightgbm==4.6.0",
+    "xgboost==3.0.4",
+    "catboost==1.2.8",
+    "joblib==1.5.1",
+    "h3==4.3.1",
+    "pyarrow==21.0.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+app = [
+    "streamlit==1.39.0",
+    "plotly==6.3.0",
+]
+dev = [
+    "smoglens[app]",
+    "pytest>=8",
+    "ruff>=0.15,<0.16",
+    "pre-commit>=4",
+]
+research = [
+    "jupyter",
+    "notebook",
+    "ipykernel",
+    "nbformat",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "scipy>=1.11.0",
+    "scikit-learn>=1.3.0",
+    "statsmodels>=0.14.0",
+    "geopandas>=0.13.0",
+    "folium>=0.14.0",
+    "psutil>=5.9.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 110
+extend-exclude = ["notebooks", "apps/mock", "*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

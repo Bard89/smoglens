@@ -1,0 +1,83 @@
+import h3
+import pandas as pd
+
+from smoglens import config
+
+
+class SpatialImputer:
+    def __init__(self, data_processor):
+        self.data_processor = data_processor
+
+    def calculate_hex_distance(self, hex1: str, hex2: str) -> float:
+        lat_lon1 = h3.cell_to_latlng(hex1)
+        lat_lon2 = h3.cell_to_latlng(hex2)
+        return h3.great_circle_distance(lat_lon1, lat_lon2, unit="km")
+
+    def find_neighbors_with_data(
+        self, target_hex: str, timestamp: pd.Timestamp, max_radius: int = 3
+    ) -> list[tuple[str, float]]:
+        neighbors_with_data = []
+
+        for radius in range(1, max_radius + 1):
+            ring_neighbors = h3.grid_disk(target_hex, radius) - h3.grid_disk(target_hex, radius - 1)
+
+            for neighbor in ring_neighbors:
+                neighbor_data = self.data_processor.data[
+                    (self.data_processor.data["hex7_id"] == neighbor)
+                    & (self.data_processor.data["timestamp"] == timestamp)
+                ]
+
+                if not neighbor_data.empty:
+                    distance = self.calculate_hex_distance(target_hex, neighbor)
+                    neighbors_with_data.append((neighbor, distance, neighbor_data.iloc[0]))
+
+            if len(neighbors_with_data) >= config.K_NEIGHBORS:
+                break
+
+        neighbors_with_data.sort(key=lambda x: x[1])
+        return neighbors_with_data[: config.K_NEIGHBORS]
+
+    def impute_value(self, target_hex: str, timestamp: pd.Timestamp, column: str) -> float | None:
+        existing_data = self.data_processor.data[
+            (self.data_processor.data["hex7_id"] == target_hex)
+            & (self.data_processor.data["timestamp"] == timestamp)
+        ]
+
+        if not existing_data.empty and not pd.isna(existing_data.iloc[0][column]):
+            return existing_data.iloc[0][column]
+
+        neighbors = self.find_neighbors_with_data(target_hex, timestamp)
+
+        if not neighbors:
+            return None
+
+        weighted_sum = 0
+        weight_total = 0
+
+        for _neighbor_hex, distance, neighbor_data in neighbors:
+            if column in neighbor_data and not pd.isna(neighbor_data[column]):
+                weight = 1.0 / max(distance, 0.1)
+                weighted_sum += neighbor_data[column] * weight
+                weight_total += weight
+
+        if weight_total > 0:
+            return weighted_sum / weight_total
+
+        return None
+
+    def impute_dataframe(self, df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
+        df = df.copy()
+
+        for col in columns:
+            if col not in df.columns:
+                continue
+
+            missing_mask = df[col].isna()
+            if missing_mask.any():
+                for idx in df[missing_mask].index:
+                    row = df.loc[idx]
+                    imputed_value = self.impute_value(row["hex7_id"], row["timestamp"], col)
+                    if imputed_value is not None:
+                        df.loc[idx, col] = imputed_value
+
+        return df
