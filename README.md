@@ -21,12 +21,6 @@ pip install -e ".[dev]"
 
 Data and trained models live in one external directory, resolved from the `SMOGLENS_DATA_PATH` environment variable (set it in `.env` or your shell):
 
-```
-smoglens-data/
-├── pm25_enriched_2023_2025_v4_20250830_222050.csv
-└── models/ensemble_v4/
-```
-
 ## Run
 
 ```bash
@@ -35,10 +29,17 @@ streamlit run apps/V2_working/app.py
 
 ## Changelog & Roadmap
 
-Version history -> [CHANGELOG.md](CHANGELOG.md). What's coming next -> [ROADMAP.md](ROADMAP.md).
+Version history -> [CHANGELOG.md](CHANGELOG.md). 
+What's coming next -> [ROADMAP.md](ROADMAP.md).
+
+## Presentation
+
+SmogLens was presented at the Le Wagon Demo Day on 05/09/2025 (an earlier version of the project, from the bootcamp):
+[recording](https://youtu.be/4xmj3REIGe0?si=JVKjPSs4vlxfIjxk&t=1233) | [project page](https://projects.lewagon.com/projects/smoglens)
 
 ## Abbreviations
 
 - **oAQ**: OpenAQ (PM2.5 air quality measurements)
 - **oM**: OpenMeteo (weather data)
 - **J**: JARTIC (traffic data)
+
