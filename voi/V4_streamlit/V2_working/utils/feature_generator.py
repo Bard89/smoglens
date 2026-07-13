@@ -1,11 +1,7 @@
-import pandas as pd
 import numpy as np
 import config
 
 class FeatureGenerator:
-    def __init__(self):
-        self.feature_cols = None
-        
     def generate_features(self, df):
         df = df.copy()
         df = df.sort_values('timestamp').reset_index(drop=True)
@@ -74,44 +70,4 @@ class FeatureGenerator:
         
         df['hex_encoded'] = 0
         
-        self.feature_cols = self.get_feature_columns(df)
-        
         return df
-    
-    def get_feature_columns(self, df):
-        feature_cols = []
-        
-        for col in df.columns:
-            if 'lag_' in col or 'rolling_' in col or 'ewm' in col:
-                feature_cols.append(col)
-            elif 'diff_' in col or 'rate_' in col:
-                feature_cols.append(col)
-            elif '_sin' in col or '_cos' in col:
-                feature_cols.append(col)
-            elif 'temp_' in col or 'traffic_' in col:
-                feature_cols.append(col)
-            elif col in ['hex_encoded', 'is_weekend']:
-                feature_cols.append(col)
-            elif col in config.WEATHER_COLS or col in config.TRAFFIC_COLS:
-                if col in df.columns:
-                    feature_cols.append(col)
-        
-        for col in ['avg_traffic_volume', 'max_traffic_volume', 'congestion_index',
-                    'traffic_measurement_count', 'traffic_distance_km', 'traffic_intensity',
-                    'temperature_c_mean', 'humidity_pct_mean', 'pressure_hpa_mean',
-                    'cloud_cover_pct_mean']:
-            if col in df.columns and col not in feature_cols:
-                feature_cols.append(col)
-        
-        return feature_cols
-    
-    def prepare_features_for_prediction(self, df):
-        df = self.generate_features(df)
-        
-        missing_cols = []
-        for col in self.feature_cols:
-            if col not in df.columns:
-                df[col] = 0.0
-                missing_cols.append(col)
-        
-        return df[self.feature_cols]

@@ -140,7 +140,7 @@ with st.spinner("Generating predictions..."):
             lower_bounds = []
             upper_bounds = []
             
-            for i, horizon in enumerate(config.HORIZONS):
+            for horizon in config.HORIZONS:
                 hours_ahead = int(horizon[:-1])
                 pred_time = selected_datetime + timedelta(hours=hours_ahead)
                 prediction_times.append(pred_time)

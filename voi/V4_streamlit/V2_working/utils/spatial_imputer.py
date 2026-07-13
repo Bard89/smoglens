@@ -1,20 +1,12 @@
-import numpy as np
 import pandas as pd
 import h3
 from typing import List, Tuple, Optional
-import pickle
-from pathlib import Path
 import config
 
 class SpatialImputer:
     def __init__(self, data_processor):
         self.data_processor = data_processor
-        self.neighbor_distances = None
-        self.cache_path = config.DATA_DIR / 'spatial_cache.pkl'
         
-    def get_hexagon_neighbors(self, hex_id: str, k: int = 1) -> List[str]:
-        return list(h3.grid_disk(hex_id, k))
-    
     def calculate_hex_distance(self, hex1: str, hex2: str) -> float:
         lat_lon1 = h3.cell_to_latlng(hex1)
         lat_lon2 = h3.cell_to_latlng(hex2)
@@ -94,48 +86,3 @@ class SpatialImputer:
                         df.loc[idx, col] = imputed_value
         
         return df
-    
-    def get_spatial_coverage(self, timestamp: pd.Timestamp, radius: int = 2) -> dict:
-        target_hex = config.SHIBUYA_HEXAGON
-        neighbors = h3.grid_disk(target_hex, radius)
-        
-        coverage = {
-            'total_hexagons': len(neighbors),
-            'hexagons_with_data': 0,
-            'coverage_percentage': 0.0,
-            'average_distance': 0.0
-        }
-        
-        timestamp = pd.to_datetime(timestamp)
-        time_window_start = timestamp - pd.Timedelta(hours=1)
-        time_window_end = timestamp + pd.Timedelta(hours=1)
-        
-        hexagons_with_data = []
-        distances = []
-        
-        for neighbor in neighbors:
-            neighbor_data = self.data_processor.data[
-                (self.data_processor.data['hex7_id'] == neighbor) &
-                (self.data_processor.data['timestamp'] >= time_window_start) &
-                (self.data_processor.data['timestamp'] <= time_window_end)
-            ]
-            
-            if not neighbor_data.empty:
-                hexagons_with_data.append(neighbor)
-                if neighbor != target_hex:
-                    distances.append(self.calculate_hex_distance(target_hex, neighbor))
-        
-        coverage['hexagons_with_data'] = len(hexagons_with_data)
-        coverage['coverage_percentage'] = 100.0 * len(hexagons_with_data) / len(neighbors)
-        
-        if distances:
-            coverage['average_distance'] = np.mean(distances)
-        
-        if coverage['hexagons_with_data'] == 0:
-            available_hexes = self.data_processor.data[
-                (self.data_processor.data['timestamp'] >= time_window_start) &
-                (self.data_processor.data['timestamp'] <= time_window_end)
-            ]['hex7_id'].nunique()
-            coverage['note'] = f"No nearby data. {available_hexes} hexagons have data in this time window."
-        
-        return coverage
