@@ -3,6 +3,12 @@
 .env.local
 .env.*.local
 
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
 # Data directories
 raw_data/
 data
