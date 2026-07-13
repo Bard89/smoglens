@@ -20,7 +20,7 @@ The destination: a deployed app anyone in Japan can use to see PM2.5 forecasts u
 ### [0.1.2] - Deployed Prototype on Past Data
 - Working app with real inference from the current ensemble (precomputed predictions)
 
-## Unreleased
+## Released
 
 ### [0.1.1] - 2026-07-12 - Cleanup Refactor
 - Behavior-preserving cleanup; predictions are bit-identical, verified by new golden tests
@@ -35,7 +35,7 @@ The destination: a deployed app anyone in Japan can use to see PM2.5 forecasts u
 
 [Presentation recording (Le Wagon Demo Day)](https://youtu.be/4xmj3REIGe0?si=JVKjPSs4vlxfIjxk&t=1233) · [Le Wagon project page](https://projects.lewagon.com/projects/smoglens)
 
-### [0.1.0] - 2025-08-31 - [V4 Multi-Year Analysis (2023-2025)](notebooks/v4_multiyear) (In progress)
+### [0.1.0] - 2025-08-31 - [V4 Multi-Year Analysis (2023-2025)](notebooks/v4_multiyear)
 - Extended temporal coverage: June 2023 - June 2025
 - **Key finding:** Spatial mismatch between datasets - OpenMeteo's 30 hexagons vs OpenAQ's 643 limits nearest-neighbor enrichment effectiveness
 - **Processing flow:**
@@ -58,8 +58,6 @@ The destination: a deployed app anyone in Japan can use to see PM2.5 forecasts u
       - [02_evaluate_ensemble_performance](notebooks/v4_multiyear/05_modeling/02_advanced/02_ensemble_evaluation/02_evaluate_ensemble_performance.ipynb) - Memory-optimized evaluation with statistical tests and visualizations
       - [03_lightgbm_feature_analysis](notebooks/v4_multiyear/05_modeling/02_advanced/03_model_analysis/03_lightgbm_feature_analysis.ipynb) - Deep dive into LightGBM feature importance and SHAP analysis
       - **Results:** MAE beats baseline on all horizons, R² challenges persist
-
-## Released
 
 ### [0.0.4] - 2025-08-30 - [V3 fixed 2023 Data Enrichment](notebooks/v3_fixed)
 - OpenAQ 2023 data incomplete (Jan-Jul missing, API broken)
