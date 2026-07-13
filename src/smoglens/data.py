@@ -9,9 +9,9 @@ from smoglens import config
 
 
 class DataProcessor:
-    def __init__(self, data_path, cache_dir, hexagon=config.SHIBUYA_HEXAGON):
+    def __init__(self, data_path, cache_dir):
         self.data_path = data_path
-        self.hexagon = hexagon
+        self.hexagon = config.SHIBUYA_HEXAGON
         self.data = None
         self.hexagon_data = None
         self.nearby_hexagons = None

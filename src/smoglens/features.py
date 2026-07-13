@@ -27,18 +27,11 @@ class FeatureGenerator:
         df["rate_24h"] = (df["diff_24h"] / 24).astype("float32")
 
         for window in config.ROLLING_WINDOWS:
-            df[f"rolling_mean_{window}h"] = (
-                df["pm25"].rolling(window, min_periods=window // 2).mean().astype("float32")
-            )
-            df[f"rolling_std_{window}h"] = (
-                df["pm25"].rolling(window, min_periods=window // 2).std().astype("float32")
-            )
-            df[f"rolling_max_{window}h"] = (
-                df["pm25"].rolling(window, min_periods=window // 2).max().astype("float32")
-            )
-            df[f"rolling_min_{window}h"] = (
-                df["pm25"].rolling(window, min_periods=window // 2).min().astype("float32")
-            )
+            rolling = df["pm25"].rolling(window, min_periods=window // 2)
+            df[f"rolling_mean_{window}h"] = rolling.mean().astype("float32")
+            df[f"rolling_std_{window}h"] = rolling.std().astype("float32")
+            df[f"rolling_max_{window}h"] = rolling.max().astype("float32")
+            df[f"rolling_min_{window}h"] = rolling.min().astype("float32")
 
         for alpha in config.EWM_ALPHAS:
             df[f"ewm_{alpha}"] = df["pm25"].ewm(alpha=alpha, adjust=False).mean().astype("float32")
