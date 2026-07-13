@@ -6,9 +6,9 @@ Baseline is the last available hour of data, so the models must beat simply repe
 
 ## Presentation
 
-SmogLens was presented at the Le Wagon Demo Day on 05/09/2025 in Tokyo (an earlier version of the project). Check out our — together with [Yuriya](https://github.com/YuriyaJP) — fantastic presentation skills -> [recording](https://youtu.be/4xmj3REIGe0?si=JVKjPSs4vlxfIjxk&t=1233)
+SmogLens was presented at the Le Wagon Demo Day on 05/09/2025 in Tokyo (an earlier version of the project). Check out our — together with [Yuriya](https://github.com/YuriyaJP) — fantastic presentation skills on [ytb](https://youtu.be/4xmj3REIGe0?si=JVKjPSs4vlxfIjxk&t=1233)
 
-The project was also featured on Le Wagon's best projects page -> [project page](https://projects.lewagon.com/projects/smoglens)
+The project was also featured on Le Wagon's best [projects page](https://projects.lewagon.com/projects/smoglens)
 
 ## Setup (macOS)
 
