@@ -29,3 +29,6 @@ CLAUDE.md
 *.cbsnapshot
 catboost_info/
 
+
+# Packaging
+*.egg-info/

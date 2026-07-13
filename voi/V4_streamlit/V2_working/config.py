@@ -12,8 +12,10 @@ if os.getenv('STREAMLIT_CLOUD'):
     DATA_PATH = BASE_DIR / 'data' / 'shibuya_2024.csv.gz'
     MODEL_DIR = BASE_DIR / 'models'
 else:
-    DATA_PATH = '/Users/vojtech/Code/Bard89/smoglens-02/data/pm25_enriched_2023_2025_v4_20250830_222050.csv'
-    MODEL_DIR = Path('/Users/vojtech/Code/Bard89/smoglens-02/voi/v4_multiyear/05_modeling/02_advanced/01_ensemble_training/trained')
+    from smoglens.config import ENRICHED_DATASET, ENSEMBLE_MODEL_DIR
+
+    DATA_PATH = ENRICHED_DATASET
+    MODEL_DIR = ENSEMBLE_MODEL_DIR
 
 ACTIVITY_LIMITS = {
     'Running': 10,
