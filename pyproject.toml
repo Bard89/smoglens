@@ -50,7 +50,7 @@ where = ["src"]
 
 [tool.ruff]
 line-length = 110
-extend-exclude = ["notebooks", "apps/V1_demo", "*.ipynb"]
+extend-exclude = ["notebooks", "apps/mock", "*.ipynb"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]

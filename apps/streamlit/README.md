@@ -1,4 +1,4 @@
-# SmogLens V2 - PM2.5 Prediction App
+# SmogLens Streamlit App
 
 Real-time PM2.5 predictions for outdoor activities in Shibuya, Tokyo. Six-hour forecasts from the LightGBM + XGBoost + CatBoost ensemble, with activity-based safety thresholds and K-NN spatial imputation.
 
@@ -8,7 +8,7 @@ From the repository root:
 
 ```bash
 pip install -e ".[app]"
-streamlit run apps/V2_working/app.py
+streamlit run apps/streamlit/app.py
 ```
 
 Requires the shared data directory (see the root [README](../../README.md)): the enriched dataset and the trained models resolved via `SMOGLENS_DATA_PATH`. On first start the app builds a local parquet cache in `data/`.

@@ -1,5 +1,5 @@
 {
-  "description": "Golden values pinning V2_working app behavior during the cleanup refactor",
+  "description": "Golden values pinning the streamlit app behavior during the cleanup refactor",
   "environment": {
     "python": "3.11.13",
     "numpy": "2.2.6",
